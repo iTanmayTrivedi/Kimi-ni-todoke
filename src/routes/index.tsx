@@ -11,6 +11,9 @@ import { Footer } from "@/components/Footer";
 import { BreezeCursor } from "@/components/BreezeCursor";
 import { Prelude } from "@/components/Prelude";
 import { FloatingNav } from "@/components/FloatingNav";
+import { MangaPanels } from "@/components/MangaPanels";
+import { SeasonsDiptych } from "@/components/SeasonsDiptych";
+import { Ensemble } from "@/components/Ensemble";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -26,9 +29,12 @@ function Index() {
         <Hero />
         <Marquee />
         <Characters />
+        <Ensemble />
         <Gallery />
         <CuratorsNote />
+        <MangaPanels />
         <HaikuInterlude />
+        <SeasonsDiptych />
         <Timeline />
         <Letters />
         <Footer />
