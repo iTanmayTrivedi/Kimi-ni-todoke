@@ -3,10 +3,14 @@ import { Hero } from "@/components/Hero";
 import { Characters } from "@/components/Characters";
 import { Gallery } from "@/components/Gallery";
 import { CuratorsNote } from "@/components/CuratorsNote";
+import { HaikuInterlude } from "@/components/HaikuInterlude";
+import { Marquee } from "@/components/Marquee";
 import { Timeline } from "@/components/Timeline";
 import { Letters } from "@/components/Letters";
 import { Footer } from "@/components/Footer";
 import { BreezeCursor } from "@/components/BreezeCursor";
+import { Prelude } from "@/components/Prelude";
+import { FloatingNav } from "@/components/FloatingNav";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -14,15 +18,21 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative bg-background text-ink">
+    <main id="top" className="relative bg-background text-ink">
+      <Prelude />
       <BreezeCursor />
-      <Hero />
-      <Characters />
-      <Gallery />
-      <CuratorsNote />
-      <Timeline />
-      <Letters />
-      <Footer />
+      <FloatingNav />
+      <div className="paper-grain">
+        <Hero />
+        <Marquee />
+        <Characters />
+        <Gallery />
+        <CuratorsNote />
+        <HaikuInterlude />
+        <Timeline />
+        <Letters />
+        <Footer />
+      </div>
     </main>
   );
 }
