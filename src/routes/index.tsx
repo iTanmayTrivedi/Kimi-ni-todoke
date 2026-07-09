@@ -15,6 +15,8 @@ import { MangaPanels } from "@/components/MangaPanels";
 import { SeasonsDiptych } from "@/components/SeasonsDiptych";
 import { Ensemble } from "@/components/Ensemble";
 import { KanjiGlossary } from "@/components/KanjiGlossary";
+import { ConfessionScene } from "@/components/ConfessionScene";
+import { HorizontalCinema } from "@/components/HorizontalCinema";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -32,9 +34,11 @@ function Index() {
         <Characters />
         <Ensemble />
         <Gallery />
+        <HorizontalCinema />
         <CuratorsNote />
         <MangaPanels />
         <HaikuInterlude />
+        <ConfessionScene />
         <SeasonsDiptych />
         <Timeline />
         <KanjiGlossary />
