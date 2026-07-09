@@ -14,6 +14,7 @@ import { FloatingNav } from "@/components/FloatingNav";
 import { MangaPanels } from "@/components/MangaPanels";
 import { SeasonsDiptych } from "@/components/SeasonsDiptych";
 import { Ensemble } from "@/components/Ensemble";
+import { KanjiGlossary } from "@/components/KanjiGlossary";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -36,6 +37,7 @@ function Index() {
         <HaikuInterlude />
         <SeasonsDiptych />
         <Timeline />
+        <KanjiGlossary />
         <Letters />
         <Footer />
       </div>
