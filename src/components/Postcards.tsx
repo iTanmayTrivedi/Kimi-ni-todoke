@@ -165,11 +165,12 @@ function Postcard({ p, index }: { p: (typeof postcards)[number]; index: number }
         {/* shine sweep on hover */}
         <motion.div
           aria-hidden
-          animate={{ opacity: hover ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
+          animate={{ opacity: hover ? 1 : 0, backgroundPositionX: hover ? "120%" : "-20%" }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           className="pointer-events-none absolute inset-0"
           style={{
-            background: useTransform(shineX, (v) => `linear-gradient(105deg, transparent ${Number(v.replace("%", "")) - 15}%, oklch(1 0 0 / 0.35) ${v}, transparent ${Number(v.replace("%", "")) + 15}%)`) as unknown as string,
+            background: "linear-gradient(105deg, transparent 40%, oklch(1 0 0 / 0.35) 50%, transparent 60%)",
+            backgroundSize: "200% 100%",
             mixBlendMode: "overlay",
           }}
         />
