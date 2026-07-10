@@ -43,6 +43,7 @@ function Index() {
         <HaikuInterlude />
         <ConfessionScene />
         <SeasonsDiptych />
+        <Postcards />
         <Timeline />
         <AudioSignature />
         <KanjiGlossary />
