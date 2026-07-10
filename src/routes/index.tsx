@@ -17,6 +17,8 @@ import { Ensemble } from "@/components/Ensemble";
 import { KanjiGlossary } from "@/components/KanjiGlossary";
 import { ConfessionScene } from "@/components/ConfessionScene";
 import { HorizontalCinema } from "@/components/HorizontalCinema";
+import { TextMaskReveal } from "@/components/TextMaskReveal";
+import { AudioSignature } from "@/components/AudioSignature";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -41,7 +43,9 @@ function Index() {
         <ConfessionScene />
         <SeasonsDiptych />
         <Timeline />
+        <AudioSignature />
         <KanjiGlossary />
+        <TextMaskReveal />
         <Letters />
         <Footer />
       </div>
