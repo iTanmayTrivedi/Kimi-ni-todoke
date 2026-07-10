@@ -83,7 +83,7 @@ function Postcard({ p, index }: { p: (typeof postcards)[number]; index: number }
   const y = useMotionValue(0);
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { stiffness: 120, damping: 14 });
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-14, 14]), { stiffness: 120, damping: 14 });
-  const shineX = useTransform(x, [-0.5, 0.5], ["0%", "100%"]);
+  
   const [hover, setHover] = useState(false);
 
   const handleMove = (e: React.MouseEvent) => {
