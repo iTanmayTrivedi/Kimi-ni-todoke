@@ -19,6 +19,7 @@ import { ConfessionScene } from "@/components/ConfessionScene";
 import { HorizontalCinema } from "@/components/HorizontalCinema";
 import { TextMaskReveal } from "@/components/TextMaskReveal";
 import { AudioSignature } from "@/components/AudioSignature";
+import { Postcards } from "@/components/Postcards";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -42,6 +43,7 @@ function Index() {
         <HaikuInterlude />
         <ConfessionScene />
         <SeasonsDiptych />
+        <Postcards />
         <Timeline />
         <AudioSignature />
         <KanjiGlossary />
