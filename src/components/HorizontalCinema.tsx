@@ -1,9 +1,13 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import sawako from "@/assets/sawako.jpg";
-import kazehaya from "@/assets/kazehaya.jpg";
-import chizuru from "@/assets/chizuru.jpg";
-import ayane from "@/assets/ayane.jpg";
+import sawakoAsset from "@/assets/sawako-real.jpg.asset.json";
+import kazehayaAsset from "@/assets/kazehaya-real.jpg.asset.json";
+import chizuruAsset from "@/assets/chizuru-real.jpg.asset.json";
+import ayaneAsset from "@/assets/ayane-real.jpg.asset.json";
+const sawako = sawakoAsset.url;
+const kazehaya = kazehayaAsset.url;
+const chizuru = chizuruAsset.url;
+const ayane = ayaneAsset.url;
 import pathway from "@/assets/hero-pathway.jpg";
 import classroom from "@/assets/classroom.jpg";
 import fireworks from "@/assets/fireworks.jpg";
