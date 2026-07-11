@@ -88,9 +88,11 @@ Nothing shouts. Everything reaches.
 | **十一** | The Thread — 縁 | `Timeline.tsx` | Scroll-drawn chronology |
 | **十二** | Audio Signature — 音 | `AudioSignature.tsx` | 64-bar SVG spectrogram of silence |
 | **十三** | Ensō — 円相 | `InkConstellation.tsx` | Sumi-e circle drawn in one breath |
-| **十四** | Silent Dictionary — 言葉 | `KanjiGlossary.tsx` | Eight kanji · hover-reveal poem |
-| **十五** | Text Mask — 届 | `TextMaskReveal.tsx` | SVG mask cuts kanji through film |
-| **十六** | Letters Untold — 手紙 | `Letters.tsx` | Handwritten envelope closing |
+| **十三** | Ensō — 円相 | `InkConstellation.tsx` | Sumi-e circle drawn in one breath |
+| **十四** | Kintsugi — 金継ぎ | `Kintsugi.tsx` | Gold veins heal a fractured bowl |
+| **十五** | Silent Dictionary — 言葉 | `KanjiGlossary.tsx` | Eight kanji · hover-reveal poem |
+| **十六** | Text Mask — 届 | `TextMaskReveal.tsx` | SVG mask cuts kanji through film |
+| **十七** | Letters Untold — 手紙 | `Letters.tsx` | Handwritten envelope closing |
 
 <br />
 
