@@ -47,6 +47,7 @@ function Index() {
         <Postcards />
         <Timeline />
         <AudioSignature />
+        <InkConstellation />
         <KanjiGlossary />
         <TextMaskReveal />
         <Letters />
