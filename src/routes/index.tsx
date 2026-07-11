@@ -21,6 +21,7 @@ import { TextMaskReveal } from "@/components/TextMaskReveal";
 import { AudioSignature } from "@/components/AudioSignature";
 import { Postcards } from "@/components/Postcards";
 import { InkConstellation } from "@/components/InkConstellation";
+import { Kintsugi } from "@/components/Kintsugi";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -48,6 +49,7 @@ function Index() {
         <Timeline />
         <AudioSignature />
         <InkConstellation />
+        <Kintsugi />
         <KanjiGlossary />
         <TextMaskReveal />
         <Letters />
