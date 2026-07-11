@@ -380,6 +380,8 @@ Timeline         →  scroll-drawn linear-gradient thread linking milestones
 AudioSignature   →  64-bar SVG spectrogram of silence
 InkConstellation →  SVG enso drawn via strokeDashoffset,
                     orbiting kanji + hanko seal
+Kintsugi         →  gold veins draw across a fractured bowl,
+                    six SVG paths healed by scrollYProgress
 TextMaskReveal   →  SVG <mask> cuts 君に届け through zooming film
 KanjiGlossary    →  8-cell grid, hover-reveal poem + hanko seal
 Letters          →  handwritten script, envelope reveal
