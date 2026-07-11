@@ -20,6 +20,7 @@ import { HorizontalCinema } from "@/components/HorizontalCinema";
 import { TextMaskReveal } from "@/components/TextMaskReveal";
 import { AudioSignature } from "@/components/AudioSignature";
 import { Postcards } from "@/components/Postcards";
+import { InkConstellation } from "@/components/InkConstellation";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -46,6 +47,7 @@ function Index() {
         <Postcards />
         <Timeline />
         <AudioSignature />
+        <InkConstellation />
         <KanjiGlossary />
         <TextMaskReveal />
         <Letters />
