@@ -20,6 +20,7 @@ import { HorizontalCinema } from "@/components/HorizontalCinema";
 import { TextMaskReveal } from "@/components/TextMaskReveal";
 import { AudioSignature } from "@/components/AudioSignature";
 import { Postcards } from "@/components/Postcards";
+import { InkConstellation } from "@/components/InkConstellation";
 
 export const Route = createFileRoute("/")({
   component: Index,
