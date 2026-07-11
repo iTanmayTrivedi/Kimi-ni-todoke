@@ -416,7 +416,7 @@ src/
 ├─ routes/
 │  ├─ __root.tsx              ── HTML shell, head metadata, providers
 │  └─ index.tsx               ── The single-page exhibition
-├─ components/                  ── 23 bespoke components
+├─ components/                  ── 24 bespoke components
 │  ├─ Prelude.tsx             ── 序 · Opening shoji panels
 │  ├─ Hero.tsx                ── 一 · "From Me to You"
 │  ├─ Characters.tsx          ── 二 · Four portraits
@@ -431,9 +431,10 @@ src/
 │  ├─ Timeline.tsx            ── 十一 · The thread
 │  ├─ AudioSignature.tsx      ── 十二 · Score of silence
 │  ├─ InkConstellation.tsx    ── 十三 · Ensō
-│  ├─ KanjiGlossary.tsx       ── 十四 · Silent dictionary
-│  ├─ TextMaskReveal.tsx      ── 十五 · The delivery
-│  ├─ Letters.tsx             ── 十六 · Letters untold
+│  ├─ Kintsugi.tsx            ── 十四 · Gold-veined bowl
+│  ├─ KanjiGlossary.tsx       ── 十五 · Silent dictionary
+│  ├─ TextMaskReveal.tsx      ── 十六 · The delivery
+│  ├─ Letters.tsx             ── 十七 · Letters untold
 │  ├─ CuratorsNote.tsx        ── Curator's essay
 │  ├─ Marquee.tsx             ── Bilingual phrase ribbon
 │  ├─ FloatingNav.tsx         ── Chapter rail + scroll progress
