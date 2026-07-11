@@ -49,6 +49,7 @@ function Index() {
         <Timeline />
         <AudioSignature />
         <InkConstellation />
+        <Kintsugi />
         <KanjiGlossary />
         <TextMaskReveal />
         <Letters />
