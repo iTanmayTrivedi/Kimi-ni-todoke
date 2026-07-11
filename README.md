@@ -193,6 +193,16 @@ Nothing shouts. Everything reaches.
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top">
+
+### 十四 · Kintsugi — 金継ぎ
+<sub>*The break is not the flaw. It is the story. Scroll — and gold veins heal the bowl.*</sub>
+
+![Kintsugi](./public/screenshots/14-kintsugi.jpg)
+
+</td>
+</tr>
 </table>
 
 <br />
