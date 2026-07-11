@@ -284,19 +284,19 @@ A petal falling.
 <tr>
 <td align="center" width="25%">
 
-### **23**
+### **24**
 <sub>Bespoke React components<br/>(excluding shadcn primitives)</sub>
 
 </td>
 <td align="center" width="25%">
 
-### **≈ 7.0k**
+### **≈ 7.2k**
 <sub>Lines of source<br/>(`.ts` / `.tsx` / `.css`, excl. codegen)</sub>
 
 </td>
 <td align="center" width="25%">
 
-### **16**
+### **17**
 <sub>Named chapters in the<br/>scroll narrative</sub>
 
 </td>
