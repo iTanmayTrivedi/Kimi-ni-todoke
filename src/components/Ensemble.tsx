@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import ensemble from "@/assets/ensemble-wallpaper.jpg.asset.json";
-import duo from "@/assets/duo-wallpaper.jpg.asset.json";
+import ensemble from "@/assets/ensemble-wallpaper.jpg";
+import duo from "@/assets/duo-wallpaper.jpg";
 
 export function Ensemble() {
   const ref = useRef<HTMLDivElement>(null);

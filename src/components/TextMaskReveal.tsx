@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import ensemble from "@/assets/ensemble-wallpaper.jpg.asset.json";
-import spring from "@/assets/poster-spring.jpg.asset.json";
+import ensemble from "@/assets/ensemble-wallpaper.jpg";
+import spring from "@/assets/poster-spring.jpg";
 
 /**
  * A 300vh pinned section where the phrase "君に届け" acts as a mask —

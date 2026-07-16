@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import sawakoAsset from "@/assets/sawako-real.jpg.asset.json";
-import kazehayaAsset from "@/assets/kazehaya-real.jpg.asset.json";
-import chizuruAsset from "@/assets/chizuru-real.jpg.asset.json";
-import ayaneAsset from "@/assets/ayane-real.jpg.asset.json";
+import sawakoAsset from "@/assets/sawako-real.jpg";
+import kazehayaAsset from "@/assets/kazehaya-real.jpg";
+import chizuruAsset from "@/assets/chizuru-real.jpg";
+import ayaneAsset from "@/assets/ayane-real.jpg";
 const sawako = sawakoAsset.url;
 const kazehaya = kazehayaAsset.url;
 const chizuru = chizuruAsset.url;

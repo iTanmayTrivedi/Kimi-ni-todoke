@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import spring from "@/assets/poster-spring.jpg.asset.json";
-import winter from "@/assets/poster-winter.jpeg.asset.json";
+import spring from "@/assets/poster-spring.jpg";
+import winter from "@/assets/poster-winter.jpeg";
 
 export function SeasonsDiptych() {
   const ref = useRef<HTMLDivElement>(null);

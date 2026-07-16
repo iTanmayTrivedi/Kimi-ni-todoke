@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import confession from "@/assets/confession-panel.jpeg.asset.json";
-import ending from "@/assets/from-me-to-you-panel.jpg.asset.json";
+import confession from "@/assets/confession-panel.jpeg";
+import ending from "@/assets/from-me-to-you-panel.jpg";
 
 export function MangaPanels() {
   const ref = useRef<HTMLDivElement>(null);

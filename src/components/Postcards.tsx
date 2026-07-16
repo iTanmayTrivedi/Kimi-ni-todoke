@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import spring from "@/assets/poster-spring.jpg.asset.json";
-import winter from "@/assets/poster-winter.jpeg.asset.json";
-import duo from "@/assets/duo-wallpaper.jpg.asset.json";
-import confession from "@/assets/confession-panel.jpeg.asset.json";
+import spring from "@/assets/poster-spring.jpg";
+import winter from "@/assets/poster-winter.jpeg";
+import duo from "@/assets/duo-wallpaper.jpg";
+import confession from "@/assets/confession-panel.jpeg";
 
 const postcards = [
   {
