@@ -29,7 +29,7 @@ export function SeasonsDiptych() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-12">
           <motion.figure style={{ y: springY }} className="relative">
             <div className="group relative overflow-hidden bg-white shadow-[0_30px_60px_-20px_oklch(0.7_0.15_15/0.3)]">
-              <img src={spring.url} alt="Spring — From Me to You" loading="lazy" className="w-full transition-transform duration-[1600ms] ease-out group-hover:scale-105" />
+              <img src={spring} alt="Spring — From Me to You" loading="lazy" className="w-full transition-transform duration-[1600ms] ease-out group-hover:scale-105" />
             </div>
             <figcaption className="mt-6 flex items-baseline justify-between">
               <div>
@@ -42,7 +42,7 @@ export function SeasonsDiptych() {
 
           <motion.figure style={{ y: winterY }} className="relative md:mt-24">
             <div className="group relative overflow-hidden bg-white shadow-[0_30px_60px_-20px_oklch(0.6_0.1_240/0.3)]">
-              <img src={winter.url} alt="Winter — 3rd Season" loading="lazy" className="w-full transition-transform duration-[1600ms] ease-out group-hover:scale-105" />
+              <img src={winter} alt="Winter — 3rd Season" loading="lazy" className="w-full transition-transform duration-[1600ms] ease-out group-hover:scale-105" />
             </div>
             <figcaption className="mt-6 flex items-baseline justify-between">
               <div>

@@ -4,10 +4,10 @@ import sawakoAsset from "@/assets/sawako-real.jpg";
 import kazehayaAsset from "@/assets/kazehaya-real.jpg";
 import chizuruAsset from "@/assets/chizuru-real.jpg";
 import ayaneAsset from "@/assets/ayane-real.jpg";
-const sawakoImg = sawakoAsset.url;
-const kazehayaImg = kazehayaAsset.url;
-const chizuruImg = chizuruAsset.url;
-const ayaneImg = ayaneAsset.url;
+const sawakoImg = sawakoAsset;
+const kazehayaImg = kazehayaAsset;
+const chizuruImg = chizuruAsset;
+const ayaneImg = ayaneAsset;
 
 const characters = [
   {

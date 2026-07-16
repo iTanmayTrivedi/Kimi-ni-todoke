@@ -32,7 +32,7 @@ export function TextMaskReveal() {
 
         {/* Base film — always present, slow zoom */}
         <motion.img
-          src={ensemble.url}
+          src={ensemble}
           alt=""
           style={{ scale, opacity: bgOpacity }}
           className="absolute inset-0 h-full w-full object-cover"
@@ -64,7 +64,7 @@ export function TextMaskReveal() {
           </defs>
 
           {/* image revealed through the letters */}
-          <image href={spring.url} width="1600" height="900" preserveAspectRatio="xMidYMid slice" mask="url(#kanji-mask)" />
+          <image href={spring} width="1600" height="900" preserveAspectRatio="xMidYMid slice" mask="url(#kanji-mask)" />
 
           {/* outline of the letters on top */}
           <text

@@ -15,7 +15,7 @@ export function Ensemble() {
       {/* Wide cinematic ensemble */}
       <div className="relative h-[90svh] w-full overflow-hidden">
         <motion.div style={{ scale, y }} className="absolute inset-0">
-          <img src={ensemble.url} alt="The ensemble — Sawako, Kazehaya, Chizuru, Ayane, Ryu, Kento" className="h-full w-full object-cover" loading="lazy" />
+          <img src={ensemble} alt="The ensemble — Sawako, Kazehaya, Chizuru, Ayane, Ryu, Kento" className="h-full w-full object-cover" loading="lazy" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.985 0.01 20 / 0.4) 0%, transparent 30%, transparent 60%, oklch(0.985 0.01 20 / 0.85) 100%)" }} />
         </motion.div>
 
@@ -47,7 +47,7 @@ export function Ensemble() {
         </div>
         <div className="md:col-span-7">
           <div className="relative overflow-hidden bg-white shadow-[0_40px_80px_-30px_oklch(0.2_0.04_20/0.25)]">
-            <img src={duo.url} alt="Sawako and Kazehaya in spring uniforms" className="w-full" loading="lazy" />
+            <img src={duo} alt="Sawako and Kazehaya in spring uniforms" className="w-full" loading="lazy" />
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import confession from "@/assets/confession-panel.jpeg";
 
 const postcards = [
   {
-    img: spring.url,
+    img: spring,
     stamp: "春",
     town: "Kitahoro · Hokkaidō",
     date: "April · Nº 04",
@@ -15,7 +15,7 @@ const postcards = [
     postmark: "北 幌 郵 便",
   },
   {
-    img: winter.url,
+    img: winter,
     stamp: "雪",
     town: "Kitahoro · Hokkaidō",
     date: "January · Nº 11",
@@ -23,7 +23,7 @@ const postcards = [
     postmark: "北 幌 郵 便",
   },
   {
-    img: duo.url,
+    img: duo,
     stamp: "縁",
     town: "Kitahoro · Hokkaidō",
     date: "October · Nº 07",
@@ -31,7 +31,7 @@ const postcards = [
     postmark: "北 幌 郵 便",
   },
   {
-    img: confession.url,
+    img: confession,
     stamp: "好",
     town: "Kitahoro · Hokkaidō",
     date: "February · Nº 02",

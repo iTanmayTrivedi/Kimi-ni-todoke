@@ -34,7 +34,7 @@ export function MangaPanels() {
           {/* Confession panel */}
           <motion.figure style={{ y: y1, rotate: rot1 }} className="md:col-span-6 md:col-start-1">
             <div className="relative overflow-hidden bg-white shadow-[0_40px_80px_-30px_oklch(0.2_0.04_20/0.25)]">
-              <img src={confession.url} alt="The one I like is you" loading="lazy" className="w-full" />
+              <img src={confession} alt="The one I like is you" loading="lazy" className="w-full" />
               <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 20%, transparent 40%, oklch(0.98 0.01 20 / 0.35) 100%)" }} />
             </div>
             <figcaption className="mt-6">
@@ -49,7 +49,7 @@ export function MangaPanels() {
           {/* Ending panel — offset */}
           <motion.figure style={{ y: y2, rotate: rot2 }} className="md:col-span-5 md:col-start-8 md:mt-32">
             <div className="relative overflow-hidden bg-white shadow-[0_40px_80px_-30px_oklch(0.2_0.04_20/0.25)]">
-              <img src={ending.url} alt="From me to you — final volume" loading="lazy" className="w-full" />
+              <img src={ending} alt="From me to you — final volume" loading="lazy" className="w-full" />
               <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 45%, oklch(0.98 0.01 20 / 0.3) 100%)" }} />
             </div>
             <figcaption className="mt-6">
