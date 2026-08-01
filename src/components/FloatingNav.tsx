@@ -5,9 +5,11 @@ const chapters = [
   { id: "top", label: "I", name: "Encounter" },
   { id: "characters", label: "II", name: "Portraits" },
   { id: "scenes", label: "III", name: "Scenes" },
-  { id: "timeline", label: "IV", name: "Thread" },
-  { id: "letters", label: "V", name: "Letters" },
+  { id: "furin", label: "IV", name: "Fūrin" },
+  { id: "timeline", label: "V", name: "Thread" },
+  { id: "letters", label: "VI", name: "Letters" },
 ];
+
 
 export function FloatingNav() {
   const [active, setActive] = useState("top");
