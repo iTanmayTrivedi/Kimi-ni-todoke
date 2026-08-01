@@ -68,12 +68,14 @@ export function PetalField({ density = 40, className = "" }: { density?: number;
 
     // Only animate while the canvas is actually on screen.
     let running = false;
-    const start = () => { if (!running && count) { running = true; tick(); } };
+    let onScreen = false;
+    const start = () => { if (!running && count && onScreen && !document.hidden) { running = true; tick(); } };
     const stop = () => { running = false; cancelAnimationFrame(raf); };
-    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: "100px" });
+    const io = new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; e.isIntersecting ? start() : stop(); }, { rootMargin: "100px" });
     io.observe(c);
     const onVis = () => (document.hidden ? stop() : start());
     document.addEventListener("visibilitychange", onVis);
+
 
     return () => {
       stop();
