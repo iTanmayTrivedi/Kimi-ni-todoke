@@ -127,25 +127,39 @@ function StarField() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const c = ref.current!; const ctx = c.getContext("2d")!;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const resize = () => { c.width = c.offsetWidth * dpr; c.height = c.offsetHeight * dpr; };
     resize(); window.addEventListener("resize", resize);
-    const stars = Array.from({ length: 160 }, () => ({
+    const stars = Array.from({ length: window.innerWidth < 768 ? 70 : 140 }, () => ({
       x: Math.random() * c.width, y: Math.random() * c.height,
       r: Math.random() * 1.2 * dpr, a: Math.random(), s: 0.005 + Math.random() * 0.01,
     }));
     let raf = 0;
-    const tick = () => {
+    const draw = () => {
       ctx.clearRect(0, 0, c.width, c.height);
       for (const s of stars) {
         s.a += s.s; if (s.a > 1 || s.a < 0.2) s.s = -s.s;
         ctx.fillStyle = `rgba(255, 240, 245, ${s.a * 0.7})`;
         ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
       }
-      raf = requestAnimationFrame(tick);
     };
-    tick();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    const tick = () => { draw(); raf = requestAnimationFrame(tick); };
+    if (reduced) { draw(); return () => window.removeEventListener("resize", resize); }
+
+    let running = false; let onScreen = false;
+    const start = () => { if (!running && onScreen && !document.hidden) { running = true; tick(); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+    const io = new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; e.isIntersecting ? start() : stop(); }, { rootMargin: "100px" });
+    io.observe(c);
+    const onVis = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      stop(); io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
   return <canvas ref={ref} className="pointer-events-none absolute inset-0 h-full w-full" />;
 }
+

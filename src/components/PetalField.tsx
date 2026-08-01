@@ -9,7 +9,9 @@ export function PetalField({ density = 40, className = "" }: { density?: number;
     const c = ref.current!;
     const ctx = c.getContext("2d")!;
     let raf = 0;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const count = reduced ? 0 : Math.round(density * (window.innerWidth < 768 ? 0.5 : 1));
 
     const resize = () => {
       c.width = c.offsetWidth * dpr;
@@ -19,7 +21,7 @@ export function PetalField({ density = 40, className = "" }: { density?: number;
     window.addEventListener("resize", resize);
 
     type P = { x: number; y: number; s: number; r: number; vr: number; vy: number; a: number };
-    const petals: P[] = Array.from({ length: density }, () => ({
+    const petals: P[] = Array.from({ length: count }, () => ({
       x: Math.random() * c.width,
       y: Math.random() * c.height,
       s: (6 + Math.random() * 10) * dpr,
@@ -32,7 +34,8 @@ export function PetalField({ density = 40, className = "" }: { density?: number;
     const onMove = (e: MouseEvent) => {
       wind.current.x = ((e.clientX / window.innerWidth) - 0.5) * 2.5;
     };
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
+
 
     const drawPetal = (p: P) => {
       ctx.save();
@@ -62,14 +65,27 @@ export function PetalField({ density = 40, className = "" }: { density?: number;
       }
       raf = requestAnimationFrame(tick);
     };
-    tick();
+
+    // Only animate while the canvas is actually on screen.
+    let running = false;
+    let onScreen = false;
+    const start = () => { if (!running && count && onScreen && !document.hidden) { running = true; tick(); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+    const io = new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; e.isIntersecting ? start() : stop(); }, { rootMargin: "100px" });
+    io.observe(c);
+    const onVis = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVis);
+
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
     };
   }, [density]);
+
 
   return <canvas ref={ref} className={`pointer-events-none absolute inset-0 h-full w-full ${className}`} />;
 }

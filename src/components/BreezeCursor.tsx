@@ -7,14 +7,19 @@ export function BreezeCursor() {
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let last = 0;
+    let live = 0;
     const onMove = (e: MouseEvent) => {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${e.clientX - 6}px, ${e.clientY - 6}px, 0)`;
       }
       const now = performance.now();
-      if (now - last < 70 || !trailRef.current) return;
+      // throttle harder and cap concurrent petals so the DOM never piles up
+      if (now - last < 110 || live >= 12 || !trailRef.current) return;
       last = now;
+      live++;
+
       const p = document.createElement("img");
       p.src = petalImg;
       p.className = "fixed pointer-events-none select-none";
@@ -24,6 +29,7 @@ export function BreezeCursor() {
       p.style.left = `${e.clientX - size / 2}px`;
       p.style.top = `${e.clientY - size / 2}px`;
       p.style.opacity = "0.9";
+      p.style.willChange = "transform, opacity";
       p.style.transition = "transform 1.6s cubic-bezier(.2,.7,.1,1), opacity 1.6s ease-out";
       p.style.zIndex = "9998";
       trailRef.current.appendChild(p);
@@ -34,11 +40,12 @@ export function BreezeCursor() {
         p.style.transform = `translate(${dx}px, ${dy}px) rotate(${r}deg) scale(0.6)`;
         p.style.opacity = "0";
       });
-      setTimeout(() => p.remove(), 1700);
+      setTimeout(() => { p.remove(); live--; }, 1700);
     };
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
+
 
   return (
     <>

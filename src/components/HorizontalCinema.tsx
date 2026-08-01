@@ -74,7 +74,7 @@ function Plate({ plate, index }: { plate: (typeof plates)[number]; index: number
   return (
     <div className="relative flex h-[70vh] w-[70vw] shrink-0 items-end md:w-[60vw]">
       <div className="absolute inset-0 overflow-hidden">
-        <img src={plate.src} alt={plate.en} className="h-full w-full object-cover" />
+        <img src={plate.src} alt={plate.en} loading="lazy" decoding="async" className="h-full w-full object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, oklch(0 0 0 / 0.6))" }} />
       </div>
 
