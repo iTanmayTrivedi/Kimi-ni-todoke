@@ -48,7 +48,9 @@ function Index() {
         <ConfessionScene />
         <SeasonsDiptych />
         <Postcards />
+        <Furin />
         <Timeline />
+
         <AudioSignature />
         <InkConstellation />
         <Kintsugi />
