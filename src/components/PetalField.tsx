@@ -65,14 +65,25 @@ export function PetalField({ density = 40, className = "" }: { density?: number;
       }
       raf = requestAnimationFrame(tick);
     };
-    tick();
+
+    // Only animate while the canvas is actually on screen.
+    let running = false;
+    const start = () => { if (!running && count) { running = true; tick(); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: "100px" });
+    io.observe(c);
+    const onVis = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVis);
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
     };
   }, [density]);
+
 
   return <canvas ref={ref} className={`pointer-events-none absolute inset-0 h-full w-full ${className}`} />;
 }
