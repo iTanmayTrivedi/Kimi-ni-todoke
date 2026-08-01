@@ -36,9 +36,34 @@ export function Furin() {
       style={{ background: "linear-gradient(180deg, oklch(0.985 0.006 60) 0%, oklch(0.96 0.015 200) 100%)" }}
     >
       <style>{`
-        @keyframes furin-sway { 0%,100% { transform: rotate(-7deg) } 50% { transform: rotate(7deg) } }
-        @keyframes furin-strip { 0%,100% { transform: rotate(-13deg) } 50% { transform: rotate(11deg) } }
+        /* True pendulum motion: sampled sine so the swing never "kicks" at the
+           turnaround. Paired with animation-timing-function: linear. */
+        @keyframes furin-sway {
+          0%    { transform: translateZ(0) rotate(-6.5deg) }
+          12.5% { transform: translateZ(0) rotate(-4.6deg) }
+          25%   { transform: translateZ(0) rotate(0deg) }
+          37.5% { transform: translateZ(0) rotate(4.6deg) }
+          50%   { transform: translateZ(0) rotate(6.5deg) }
+          62.5% { transform: translateZ(0) rotate(4.6deg) }
+          75%   { transform: translateZ(0) rotate(0deg) }
+          87.5% { transform: translateZ(0) rotate(-4.6deg) }
+          100%  { transform: translateZ(0) rotate(-6.5deg) }
+        }
+        /* The paper strip trails the bell — same sine, wider arc, phase-lagged
+           via a negative animation-delay. */
+        @keyframes furin-strip {
+          0%    { transform: translateZ(0) rotate(-11deg) }
+          12.5% { transform: translateZ(0) rotate(-7.8deg) }
+          25%   { transform: translateZ(0) rotate(0deg) }
+          37.5% { transform: translateZ(0) rotate(7.8deg) }
+          50%   { transform: translateZ(0) rotate(11deg) }
+          62.5% { transform: translateZ(0) rotate(7.8deg) }
+          75%   { transform: translateZ(0) rotate(0deg) }
+          87.5% { transform: translateZ(0) rotate(-7.8deg) }
+          100%  { transform: translateZ(0) rotate(-11deg) }
+        }
       `}</style>
+
 
       {/* Eave line the chimes hang from */}
       <div className="pointer-events-none absolute left-0 right-0 top-0 h-40">
