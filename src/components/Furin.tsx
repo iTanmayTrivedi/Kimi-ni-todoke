@@ -146,15 +146,18 @@ export function Furin() {
                     </text>
                   </svg>
 
-                  {/* tanzaku paper strip */}
+                  {/* tanzaku paper strip — same period as the bell, phase-lagged */}
                   <div
-                    className="mt-1 will-change-transform"
+                    className="mt-1"
                     style={{
                       transformOrigin: "50% 0%",
-                      animation: anim ? `furin-strip ${2.6 + i * 0.3}s ease-in-out ${c.delay}s infinite` : "none",
-                      transition: "transform 700ms cubic-bezier(.2,.7,.1,1)",
+                      animation: `furin-strip ${3.4 + i * 0.35}s linear ${c.delay - 0.42}s infinite`,
+                      animationPlayState: anim ? "running" : "paused",
+                      willChange: "transform",
+                      backfaceVisibility: "hidden",
                     }}
                   >
+
                     <div
                       className="flex h-20 w-6 items-start justify-center bg-paper pt-2 text-[9px] leading-[1.4] tracking-[0.2em] text-ink/60 md:h-28 md:w-7"
                       style={{
