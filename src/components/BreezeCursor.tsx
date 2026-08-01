@@ -7,14 +7,19 @@ export function BreezeCursor() {
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let last = 0;
+    let live = 0;
     const onMove = (e: MouseEvent) => {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${e.clientX - 6}px, ${e.clientY - 6}px, 0)`;
       }
       const now = performance.now();
-      if (now - last < 70 || !trailRef.current) return;
+      // throttle harder and cap concurrent petals so the DOM never piles up
+      if (now - last < 110 || live >= 12 || !trailRef.current) return;
       last = now;
+      live++;
+
       const p = document.createElement("img");
       p.src = petalImg;
       p.className = "fixed pointer-events-none select-none";
