@@ -26,8 +26,26 @@ import { Furin } from "@/components/Furin";
 
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Kimi ni Todoke — A Digital Exhibition in Seventeen Chapters" },
+      {
+        name: "description",
+        content:
+          "An immersive watercolour exhibition of Kimi ni Todoke: portraits, projection room, wind chimes, letters untold, and kintsugi — scroll-driven and quietly cinematic.",
+      },
+      { property: "og:title", content: "Kimi ni Todoke — A Digital Exhibition" },
+      {
+        property: "og:description",
+        content: "Seventeen chapters of watercolour, ink and motion, devoted to the story of Sawako and Kazehaya.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
+
 
 function Index() {
   return (
