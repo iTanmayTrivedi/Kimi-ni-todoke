@@ -107,13 +107,16 @@ export function Furin() {
 
                 {/* pivot: bell + strip sway together */}
                 <div
-                  className="flex flex-col items-center will-change-transform"
+                  className="flex flex-col items-center"
                   style={{
                     transformOrigin: "50% 0%",
-                    animation: anim ? `furin-sway ${3.4 + i * 0.35}s ease-in-out ${c.delay}s infinite` : "none",
-                    transition: "transform 700ms cubic-bezier(.2,.7,.1,1)",
+                    animation: `furin-sway ${3.4 + i * 0.35}s linear ${c.delay}s infinite`,
+                    animationPlayState: anim ? "running" : "paused",
+                    willChange: "transform",
+                    backfaceVisibility: "hidden",
                   }}
                 >
+
                   {/* glass bell */}
                   <svg viewBox="0 0 80 90" className="h-16 w-16 md:h-24 md:w-24" aria-hidden>
                     <defs>
