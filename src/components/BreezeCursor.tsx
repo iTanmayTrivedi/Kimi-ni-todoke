@@ -29,6 +29,7 @@ export function BreezeCursor() {
       p.style.left = `${e.clientX - size / 2}px`;
       p.style.top = `${e.clientY - size / 2}px`;
       p.style.opacity = "0.9";
+      p.style.willChange = "transform, opacity";
       p.style.transition = "transform 1.6s cubic-bezier(.2,.7,.1,1), opacity 1.6s ease-out";
       p.style.zIndex = "9998";
       trailRef.current.appendChild(p);
@@ -39,11 +40,12 @@ export function BreezeCursor() {
         p.style.transform = `translate(${dx}px, ${dy}px) rotate(${r}deg) scale(0.6)`;
         p.style.opacity = "0";
       });
-      setTimeout(() => p.remove(), 1700);
+      setTimeout(() => { p.remove(); live--; }, 1700);
     };
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
+
 
   return (
     <>
