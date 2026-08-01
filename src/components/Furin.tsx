@@ -36,9 +36,34 @@ export function Furin() {
       style={{ background: "linear-gradient(180deg, oklch(0.985 0.006 60) 0%, oklch(0.96 0.015 200) 100%)" }}
     >
       <style>{`
-        @keyframes furin-sway { 0%,100% { transform: rotate(-7deg) } 50% { transform: rotate(7deg) } }
-        @keyframes furin-strip { 0%,100% { transform: rotate(-13deg) } 50% { transform: rotate(11deg) } }
+        /* True pendulum motion: sampled sine so the swing never "kicks" at the
+           turnaround. Paired with animation-timing-function: linear. */
+        @keyframes furin-sway {
+          0%    { transform: translateZ(0) rotate(-6.5deg) }
+          12.5% { transform: translateZ(0) rotate(-4.6deg) }
+          25%   { transform: translateZ(0) rotate(0deg) }
+          37.5% { transform: translateZ(0) rotate(4.6deg) }
+          50%   { transform: translateZ(0) rotate(6.5deg) }
+          62.5% { transform: translateZ(0) rotate(4.6deg) }
+          75%   { transform: translateZ(0) rotate(0deg) }
+          87.5% { transform: translateZ(0) rotate(-4.6deg) }
+          100%  { transform: translateZ(0) rotate(-6.5deg) }
+        }
+        /* The paper strip trails the bell — same sine, wider arc, phase-lagged
+           via a negative animation-delay. */
+        @keyframes furin-strip {
+          0%    { transform: translateZ(0) rotate(-11deg) }
+          12.5% { transform: translateZ(0) rotate(-7.8deg) }
+          25%   { transform: translateZ(0) rotate(0deg) }
+          37.5% { transform: translateZ(0) rotate(7.8deg) }
+          50%   { transform: translateZ(0) rotate(11deg) }
+          62.5% { transform: translateZ(0) rotate(7.8deg) }
+          75%   { transform: translateZ(0) rotate(0deg) }
+          87.5% { transform: translateZ(0) rotate(-7.8deg) }
+          100%  { transform: translateZ(0) rotate(-11deg) }
+        }
       `}</style>
+
 
       {/* Eave line the chimes hang from */}
       <div className="pointer-events-none absolute left-0 right-0 top-0 h-40">
@@ -82,13 +107,16 @@ export function Furin() {
 
                 {/* pivot: bell + strip sway together */}
                 <div
-                  className="flex flex-col items-center will-change-transform"
+                  className="flex flex-col items-center"
                   style={{
                     transformOrigin: "50% 0%",
-                    animation: anim ? `furin-sway ${3.4 + i * 0.35}s ease-in-out ${c.delay}s infinite` : "none",
-                    transition: "transform 700ms cubic-bezier(.2,.7,.1,1)",
+                    animation: `furin-sway ${3.4 + i * 0.35}s linear ${c.delay}s infinite`,
+                    animationPlayState: anim ? "running" : "paused",
+                    willChange: "transform",
+                    backfaceVisibility: "hidden",
                   }}
                 >
+
                   {/* glass bell */}
                   <svg viewBox="0 0 80 90" className="h-16 w-16 md:h-24 md:w-24" aria-hidden>
                     <defs>
@@ -118,15 +146,18 @@ export function Furin() {
                     </text>
                   </svg>
 
-                  {/* tanzaku paper strip */}
+                  {/* tanzaku paper strip — same period as the bell, phase-lagged */}
                   <div
-                    className="mt-1 will-change-transform"
+                    className="mt-1"
                     style={{
                       transformOrigin: "50% 0%",
-                      animation: anim ? `furin-strip ${2.6 + i * 0.3}s ease-in-out ${c.delay}s infinite` : "none",
-                      transition: "transform 700ms cubic-bezier(.2,.7,.1,1)",
+                      animation: `furin-strip ${3.4 + i * 0.35}s linear ${c.delay - 0.42}s infinite`,
+                      animationPlayState: anim ? "running" : "paused",
+                      willChange: "transform",
+                      backfaceVisibility: "hidden",
                     }}
                   >
+
                     <div
                       className="flex h-20 w-6 items-start justify-center bg-paper pt-2 text-[9px] leading-[1.4] tracking-[0.2em] text-ink/60 md:h-28 md:w-7"
                       style={{
