@@ -22,6 +22,8 @@ import { AudioSignature } from "@/components/AudioSignature";
 import { Postcards } from "@/components/Postcards";
 import { InkConstellation } from "@/components/InkConstellation";
 import { Kintsugi } from "@/components/Kintsugi";
+import { Furin } from "@/components/Furin";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
