@@ -114,7 +114,7 @@ function Postcard({ p, index }: { p: (typeof postcards)[number]; index: number }
         <div className="absolute inset-0 grid grid-cols-5 bg-paper">
           {/* left: image */}
           <div className="relative col-span-3 overflow-hidden">
-            <img src={p.img} alt="" className="h-full w-full object-cover" />
+            <img src={p.img} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
             {/* watercolor edge */}
             <div className="absolute inset-0 mix-blend-multiply" style={{ background: "radial-gradient(ellipse at 30% 70%, transparent 40%, oklch(0.94 0.04 10 / 0.55) 100%)" }} />
             {/* postmark circle */}
