@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 
 // 月見 — Tsukimi. Moon-viewing. The moon fills as you descend, susuki grass
 // leans in the dark, and one vertical line of the poem is written in the air.
@@ -97,27 +97,9 @@ export function Tsukimi() {
 
         {/* vertical poem */}
         <div className="mt-24 flex gap-10 md:gap-16">
-          {lines.map((l, i) => {
-            const o = useTransform(p, [0.18 + i * 0.16, 0.32 + i * 0.16], [0, 1]);
-            const ty = useTransform(p, [0.18 + i * 0.16, 0.42 + i * 0.16], [24, 0]);
-            return (
-              <motion.div key={l.jp} style={{ opacity: o, y: ty }} className="flex flex-col items-center">
-                <div
-                  className="text-base leading-[1.9] tracking-[0.35em] md:text-xl"
-                  style={{ writingMode: "vertical-rl", fontFamily: "var(--font-jp)", color: "oklch(0.96 0.02 90 / 0.9)" }}
-                >
-                  {l.jp}
-                </div>
-                <div className="mt-6 h-8 w-px" style={{ background: "oklch(0.96 0.02 90 / 0.25)" }} />
-                <div
-                  className="mt-4 max-w-[7rem] text-center text-[9px] uppercase leading-relaxed tracking-[0.3em]"
-                  style={{ color: "oklch(0.94 0.02 90 / 0.45)" }}
-                >
-                  {l.en}
-                </div>
-              </motion.div>
-            );
-          })}
+          {lines.map((l, i) => (
+            <PoemLine key={l.jp} progress={p} index={i} jp={l.jp} en={l.en} />
+          ))}
         </div>
       </div>
 
@@ -139,5 +121,27 @@ export function Tsukimi() {
         </g>
       </motion.svg>
     </section>
+  );
+}
+
+function PoemLine({ progress, index, jp, en }: { progress: MotionValue<number>; index: number; jp: string; en: string }) {
+  const o = useTransform(progress, [0.18 + index * 0.16, 0.32 + index * 0.16], [0, 1]);
+  const ty = useTransform(progress, [0.18 + index * 0.16, 0.42 + index * 0.16], [24, 0]);
+  return (
+    <motion.div style={{ opacity: o, y: ty }} className="flex flex-col items-center">
+      <div
+        className="text-base leading-[1.9] tracking-[0.35em] md:text-xl"
+        style={{ writingMode: "vertical-rl", fontFamily: "var(--font-jp)", color: "oklch(0.96 0.02 90 / 0.9)" }}
+      >
+        {jp}
+      </div>
+      <div className="mt-6 h-8 w-px" style={{ background: "oklch(0.96 0.02 90 / 0.25)" }} />
+      <div
+        className="mt-4 max-w-[7rem] text-center text-[9px] uppercase leading-relaxed tracking-[0.3em]"
+        style={{ color: "oklch(0.94 0.02 90 / 0.45)" }}
+      >
+        {en}
+      </div>
+    </motion.div>
   );
 }
