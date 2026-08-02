@@ -5,10 +5,12 @@ const chapters = [
   { id: "top", label: "I", name: "Encounter" },
   { id: "characters", label: "II", name: "Portraits" },
   { id: "scenes", label: "III", name: "Scenes" },
-  { id: "furin", label: "IV", name: "Fūrin" },
-  { id: "tsukimi", label: "V", name: "Tsukimi" },
-  { id: "timeline", label: "VI", name: "Thread" },
-  { id: "letters", label: "VII", name: "Letters" },
+  { id: "ame", label: "IV", name: "Ame" },
+  { id: "furin", label: "V", name: "Fūrin" },
+  { id: "tsukimi", label: "VI", name: "Tsukimi" },
+  { id: "timeline", label: "VII", name: "Thread" },
+  { id: "letters", label: "VIII", name: "Letters" },
+
 
 ];
 
