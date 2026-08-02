@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main id="top" className="relative bg-background text-ink">
+    <main id="top" className="relative overflow-x-clip bg-background text-ink">
       <Prelude />
       <BreezeCursor />
       <FloatingNav />
