@@ -24,6 +24,7 @@ import { InkConstellation } from "@/components/InkConstellation";
 import { Kintsugi } from "@/components/Kintsugi";
 import { Furin } from "@/components/Furin";
 import { Tsukimi } from "@/components/Tsukimi";
+import { Rain } from "@/components/Rain";
 
 
 export const Route = createFileRoute("/")({
