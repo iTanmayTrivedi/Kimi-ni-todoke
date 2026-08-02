@@ -23,6 +23,7 @@ import { Postcards } from "@/components/Postcards";
 import { InkConstellation } from "@/components/InkConstellation";
 import { Kintsugi } from "@/components/Kintsugi";
 import { Furin } from "@/components/Furin";
+import { Tsukimi } from "@/components/Tsukimi";
 
 
 export const Route = createFileRoute("/")({
