@@ -68,7 +68,9 @@ function Index() {
         <ConfessionScene />
         <SeasonsDiptych />
         <Postcards />
+        <Rain />
         <Furin />
+
         <Tsukimi />
         <Timeline />
 
