@@ -68,7 +68,9 @@ function Index() {
         <SeasonsDiptych />
         <Postcards />
         <Furin />
+        <Tsukimi />
         <Timeline />
+
 
         <AudioSignature />
         <InkConstellation />
