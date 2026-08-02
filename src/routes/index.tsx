@@ -24,6 +24,7 @@ import { InkConstellation } from "@/components/InkConstellation";
 import { Kintsugi } from "@/components/Kintsugi";
 import { Furin } from "@/components/Furin";
 import { Tsukimi } from "@/components/Tsukimi";
+import { Rain } from "@/components/Rain";
 
 
 export const Route = createFileRoute("/")({
@@ -50,7 +51,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main id="top" className="relative bg-background text-ink">
+    <main id="top" className="relative overflow-x-clip bg-background text-ink">
       <Prelude />
       <BreezeCursor />
       <FloatingNav />
@@ -67,7 +68,9 @@ function Index() {
         <ConfessionScene />
         <SeasonsDiptych />
         <Postcards />
+        <Rain />
         <Furin />
+
         <Tsukimi />
         <Timeline />
 

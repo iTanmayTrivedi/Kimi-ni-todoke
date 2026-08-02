@@ -52,6 +52,12 @@
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }
+  /* Lock sideways drift — `clip` (not `hidden`) so position: sticky keeps working */
+  html, body {
+    overflow-x: clip;
+    max-width: 100%;
+    overscroll-behavior-x: none;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -60,6 +66,7 @@
     letter-spacing: 0.01em;
     cursor: none;
   }
+
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
     font-weight: 300;
