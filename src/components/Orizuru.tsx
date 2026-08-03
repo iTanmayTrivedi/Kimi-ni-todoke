@@ -7,12 +7,15 @@ import { motion, useScroll, useTransform, useSpring, type MotionValue } from "fr
 /** Six folds. Each has its own scroll window so the sheet becomes a bird. */
 const folds = [
   { d: "M60 20 L260 20 L260 220 L60 220 Z", from: 0.0, to: 0.16, fill: "oklch(0.985 0.008 15)" },
-  { d: "M60 20 L260 20 L160 120 Z", from: 0.12, to: 0.3, fill: "oklch(0.955 0.02 12)" },
-  { d: "M60 220 L260 220 L160 120 Z", from: 0.22, to: 0.42, fill: "oklch(0.925 0.035 12)" },
-  { d: "M160 120 L260 20 L296 128 Z", from: 0.36, to: 0.56, fill: "oklch(0.9 0.05 14)" },
-  { d: "M160 120 L60 20 L24 128 Z", from: 0.46, to: 0.66, fill: "oklch(0.88 0.055 12)" },
-  { d: "M160 120 L160 236 L214 196 Z", from: 0.58, to: 0.78, fill: "oklch(0.82 0.07 12)" },
+  { d: "M60 20 L260 20 L160 130 Z", from: 0.12, to: 0.3, fill: "oklch(0.955 0.02 12)" },
+  { d: "M60 220 L260 220 L160 130 Z", from: 0.2, to: 0.4, fill: "oklch(0.93 0.032 12)" },
+  // wings
+  { d: "M160 130 L26 34 L74 158 Z", from: 0.34, to: 0.54, fill: "oklch(0.905 0.048 14)" },
+  { d: "M160 130 L294 34 L246 158 Z", from: 0.42, to: 0.62, fill: "oklch(0.875 0.058 12)" },
+  // body + tail
+  { d: "M160 130 L206 236 L118 202 Z", from: 0.56, to: 0.76, fill: "oklch(0.82 0.07 12)" },
 ];
+
 
 function Fold({
   p,
