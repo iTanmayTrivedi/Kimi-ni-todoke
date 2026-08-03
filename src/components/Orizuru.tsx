@@ -119,14 +119,14 @@ export function Orizuru() {
           </div>
 
           <div className="mt-12 space-y-8">
-            <Verse p={p} from={0.18} jp="「一折り、ひと言。」" en="One fold · one unsaid word" />
-            <Verse p={p} from={0.42} jp="「折り目は、消えない。」" en="A crease never truly disappears" />
-            <Verse p={p} from={0.68} jp="「それでも、飛ぶ。」" en="And still — it flies" />
+            <Verse p={p} from={0.12} jp="「一折り、ひと言。」" en="One fold · one unsaid word" />
+            <Verse p={p} from={0.3} jp="「折り目は、消えない。」" en="A crease never truly disappears" />
+            <Verse p={p} from={0.48} jp="「それでも、飛ぶ。」" en="And still — it flies" />
           </div>
         </motion.div>
 
         {/* the folding sheet */}
-        <div className="relative mx-auto w-full max-w-md">
+        <div className="relative mx-auto w-full max-w-md lg:sticky lg:top-28">
           <motion.div
             className="absolute inset-0 rounded-full"
             aria-hidden
@@ -138,7 +138,7 @@ export function Orizuru() {
               <motion.g
                 stroke="oklch(0.22 0.01 260 / 0.12)"
                 strokeWidth="0.8"
-                style={{ opacity: useTransform(p, [0, 0.35], [1, 0]) }}
+                style={{ opacity: useTransform(p, [0, 0.22], [1, 0]) }}
               >
                 {creases.map((y) => (
                   <line key={y} x1="60" y1={y} x2="260" y2={y} />
@@ -148,7 +148,7 @@ export function Orizuru() {
                 <Fold key={f.d} p={p} {...f} />
               ))}
               {/* beak + tail, the last two folds */}
-              <motion.g style={{ opacity: useTransform(p, [0.72, 0.86], [0, 1]) }}>
+              <motion.g style={{ opacity: useTransform(p, [0.44, 0.56], [0, 1]) }}>
                 {/* neck + head, lifted to the left */}
                 <path d="M160 130 L74 158 L36 96 L60 92 Z" fill="oklch(0.8 0.08 12)" />
                 <path d="M36 96 L10 74 L44 82 Z" fill="oklch(0.72 0.1 12)" />
