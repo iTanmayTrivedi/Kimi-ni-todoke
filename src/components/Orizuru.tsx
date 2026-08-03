@@ -140,8 +140,11 @@ export function Orizuru() {
               ))}
               {/* beak + tail, the last two folds */}
               <motion.g style={{ opacity: useTransform(p, [0.72, 0.86], [0, 1]) }}>
-                <path d="M24 128 L2 146 L30 148 Z" fill="oklch(0.78 0.09 12)" />
-                <path d="M296 128 L318 150 L290 150 Z" fill="oklch(0.78 0.09 12)" />
+                {/* neck + head, lifted to the left */}
+                <path d="M160 130 L74 158 L36 96 L60 92 Z" fill="oklch(0.8 0.08 12)" />
+                <path d="M36 96 L10 74 L44 82 Z" fill="oklch(0.72 0.1 12)" />
+                {/* tail, pointing right */}
+                <path d="M160 130 L246 158 L302 118 Z" fill="oklch(0.78 0.09 12)" />
               </motion.g>
               <motion.g stroke="oklch(0.99 0 0 / 0.55)" strokeWidth="1" fill="none" style={{ opacity: halo }}>
                 <path d="M160 22 L160 232" />
