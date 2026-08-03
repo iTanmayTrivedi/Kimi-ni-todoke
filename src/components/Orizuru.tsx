@@ -7,15 +7,16 @@ import { motion, useScroll, useTransform, useSpring, type MotionValue } from "fr
 /** Six folds. Each has its own scroll window so the sheet becomes a bird. */
 const folds = [
   // the flat sheet — it dissolves once the wings take over
-  { d: "M60 20 L260 20 L260 220 L60 220 Z", from: 0.0, to: 0.14, out: 0.6, fill: "oklch(0.985 0.008 15)" },
-  { d: "M60 20 L260 20 L160 130 Z", from: 0.12, to: 0.3, out: 0.66, fill: "oklch(0.955 0.02 12)" },
-  { d: "M60 220 L260 220 L160 130 Z", from: 0.2, to: 0.4, out: 0.72, fill: "oklch(0.93 0.032 12)" },
+  { d: "M60 20 L260 20 L260 220 L60 220 Z", from: 0.0, to: 0.1, out: 0.34, fill: "oklch(0.985 0.008 15)" },
+  { d: "M60 20 L260 20 L160 130 Z", from: 0.08, to: 0.2, out: 0.4, fill: "oklch(0.955 0.02 12)" },
+  { d: "M60 220 L260 220 L160 130 Z", from: 0.14, to: 0.26, out: 0.44, fill: "oklch(0.93 0.032 12)" },
   // wings
-  { d: "M160 130 L26 34 L74 158 Z", from: 0.34, to: 0.54, fill: "oklch(0.905 0.048 14)" },
-  { d: "M160 130 L294 34 L246 158 Z", from: 0.42, to: 0.62, fill: "oklch(0.875 0.058 12)" },
+  { d: "M160 130 L26 34 L74 158 Z", from: 0.22, to: 0.36, fill: "oklch(0.905 0.048 14)" },
+  { d: "M160 130 L294 34 L246 158 Z", from: 0.28, to: 0.42, fill: "oklch(0.875 0.058 12)" },
   // body + tail
-  { d: "M160 130 L206 236 L118 202 Z", from: 0.56, to: 0.76, fill: "oklch(0.82 0.07 12)" },
+  { d: "M160 130 L206 236 L118 202 Z", from: 0.36, to: 0.5, fill: "oklch(0.82 0.07 12)" },
 ];
+
 
 
 function Fold({
@@ -61,13 +62,13 @@ export function Orizuru() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const p = useSpring(scrollYProgress, { stiffness: 80, damping: 24, mass: 0.35 });
 
-  const sheetRotate = useTransform(p, [0, 0.8, 1], [-12, 4, 10]);
+  const sheetRotate = useTransform(p, [0, 0.55, 1], [-12, 4, 12]);
   const sheetY = useTransform(p, [0, 1], [70, -70]);
-  const liftY = useTransform(p, [0.78, 1], [0, -160]);
-  const liftX = useTransform(p, [0.78, 1], [0, 90]);
-  const wingTilt = useTransform(p, [0.78, 0.88, 1], [0, -14, -4]);
-  const halo = useTransform(p, [0.5, 0.85], [0, 1]);
-  const shadow = useTransform(p, [0.7, 1], [0.22, 0]);
+  const liftY = useTransform(p, [0.5, 0.78, 1], [0, -120, -220]);
+  const liftX = useTransform(p, [0.5, 1], [0, 110]);
+  const wingTilt = useTransform(p, [0.5, 0.66, 0.82, 1], [0, -14, -2, -12]);
+  const halo = useTransform(p, [0.32, 0.56], [0, 1]);
+  const shadow = useTransform(p, [0.44, 0.68], [0.22, 0]);
   const headY = useTransform(p, [0, 1], [60, -60]);
   const countText = useTransform(p, [0, 1], [1, 1000]);
   const count = useTransform(countText, (v) => String(Math.max(1, Math.round(v))).padStart(4, "0"));
