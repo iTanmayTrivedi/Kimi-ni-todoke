@@ -24,7 +24,7 @@ import { InkConstellation } from "@/components/InkConstellation";
 import { Kintsugi } from "@/components/Kintsugi";
 import { Furin } from "@/components/Furin";
 import { Tsukimi } from "@/components/Tsukimi";
-import { Rain } from "@/components/Rain";
+import { Orizuru } from "@/components/Orizuru";
 
 
 export const Route = createFileRoute("/")({
@@ -68,7 +68,7 @@ function Index() {
         <ConfessionScene />
         <SeasonsDiptych />
         <Postcards />
-        <Rain />
+        <Orizuru />
         <Furin />
 
         <Tsukimi />

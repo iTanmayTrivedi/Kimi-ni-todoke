@@ -24,7 +24,7 @@ export function KanjiGlossary() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="glossary" className="relative overflow-hidden bg-background px-6 py-40 md:px-16">
+    <section id="glossary" className="chapter-cv relative overflow-hidden bg-background px-6 py-40 md:px-16">
       <div className="pointer-events-none absolute right-8 top-16 select-none font-serif text-[10px] uppercase tracking-[0.4em] text-ink/40 md:right-16">
         Appendix · A Silent Dictionary
       </div>
