@@ -6,9 +6,10 @@ import { motion, useScroll, useTransform, useSpring, type MotionValue } from "fr
 
 /** Six folds. Each has its own scroll window so the sheet becomes a bird. */
 const folds = [
-  { d: "M60 20 L260 20 L260 220 L60 220 Z", from: 0.0, to: 0.16, fill: "oklch(0.985 0.008 15)" },
-  { d: "M60 20 L260 20 L160 130 Z", from: 0.12, to: 0.3, fill: "oklch(0.955 0.02 12)" },
-  { d: "M60 220 L260 220 L160 130 Z", from: 0.2, to: 0.4, fill: "oklch(0.93 0.032 12)" },
+  // the flat sheet — it dissolves once the wings take over
+  { d: "M60 20 L260 20 L260 220 L60 220 Z", from: 0.0, to: 0.14, out: 0.6, fill: "oklch(0.985 0.008 15)" },
+  { d: "M60 20 L260 20 L160 130 Z", from: 0.12, to: 0.3, out: 0.66, fill: "oklch(0.955 0.02 12)" },
+  { d: "M60 220 L260 220 L160 130 Z", from: 0.2, to: 0.4, out: 0.72, fill: "oklch(0.93 0.032 12)" },
   // wings
   { d: "M160 130 L26 34 L74 158 Z", from: 0.34, to: 0.54, fill: "oklch(0.905 0.048 14)" },
   { d: "M160 130 L294 34 L246 158 Z", from: 0.42, to: 0.62, fill: "oklch(0.875 0.058 12)" },
@@ -22,18 +23,25 @@ function Fold({
   d,
   from,
   to,
+  out,
   fill,
 }: {
   p: MotionValue<number>;
   d: string;
   from: number;
   to: number;
+  out?: number;
   fill: string;
 }) {
-  const opacity = useTransform(p, [from, to], [0, 1]);
+  const opacity = useTransform(
+    p,
+    out ? [from, to, out, out + 0.14] : [from, to],
+    out ? [0, 1, 1, 0] : [0, 1],
+  );
   const scale = useTransform(p, [from, to], [0.86, 1]);
-  return <motion.path d={d} fill={fill} style={{ opacity, scale, transformOrigin: "160px 120px" }} />;
+  return <motion.path d={d} fill={fill} style={{ opacity, scale, transformOrigin: "160px 130px" }} />;
 }
+
 
 function Verse({ p, from, jp, en }: { p: MotionValue<number>; from: number; jp: string; en: string }) {
   const opacity = useTransform(p, [from, from + 0.12], [0, 1]);
