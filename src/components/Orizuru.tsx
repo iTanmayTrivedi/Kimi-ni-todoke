@@ -95,7 +95,7 @@ export function Orizuru() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 px-6 lg:pl-32 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <motion.div style={{ y: headY }}>
           <div className="mb-4 text-[10px] uppercase tracking-[0.5em] text-ink/50">Chapter · 折鶴 · One Thousand</div>
           <h2 className="max-w-xl font-serif text-5xl italic leading-[1.05] text-ink md:text-7xl">
