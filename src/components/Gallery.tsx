@@ -14,7 +14,7 @@ const scenes = [
 
 export function Gallery() {
   return (
-    <section id="scenes" className="relative bg-background py-40">
+    <section id="scenes" className="chapter-cv relative bg-background py-40">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="mb-24 grid gap-8 md:grid-cols-12">
           <div className="md:col-span-6">
