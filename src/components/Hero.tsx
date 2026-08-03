@@ -18,6 +18,8 @@ export function Hero() {
           alt="Cherry blossom pathway at dawn"
           width={1920}
           height={1200}
+          decoding="async"
+          fetchPriority="high"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.99 0.01 20 / 0.35) 0%, oklch(0.985 0.01 20 / 0.15) 40%, oklch(0.985 0.01 20 / 0.75) 100%)" }} />

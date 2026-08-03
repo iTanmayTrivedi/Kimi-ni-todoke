@@ -78,6 +78,12 @@
 @utility text-balance { text-wrap: balance; }
 @utility text-pretty { text-wrap: pretty; }
 
+/* Skip layout/paint work for chapters far off-screen. */
+@utility chapter-cv {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 @utility ink-mask {
   background: linear-gradient(180deg, var(--ink) 0%, var(--ink) 100%);
   -webkit-background-clip: text;
