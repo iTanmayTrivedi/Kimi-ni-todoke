@@ -25,6 +25,8 @@ import { Kintsugi } from "@/components/Kintsugi";
 import { Furin } from "@/components/Furin";
 import { Tsukimi } from "@/components/Tsukimi";
 import { Orizuru } from "@/components/Orizuru";
+import { Ema } from "@/components/Ema";
+import { Departures } from "@/components/Departures";
 
 
 export const Route = createFileRoute("/")({
@@ -69,10 +71,13 @@ function Index() {
         <SeasonsDiptych />
         <Postcards />
         <Orizuru />
+        <Ema />
         <Furin />
 
         <Tsukimi />
+        <Departures />
         <Timeline />
+
 
 
         <AudioSignature />
