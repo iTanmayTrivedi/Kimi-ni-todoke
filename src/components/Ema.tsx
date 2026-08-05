@@ -61,12 +61,6 @@ export function Ema() {
         }
       `}</style>
 
-      {/* shrine beam the plaques hang from */}
-      <div
-        className="pointer-events-none absolute left-0 right-0 top-[38%] h-[10px] md:top-[36%]"
-        aria-hidden
-        style={{ background: "linear-gradient(180deg, oklch(0.42 0.03 45), oklch(0.3 0.03 40))" }}
-      />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:pl-32">
         <div className="mb-20 grid gap-8 md:grid-cols-12">
