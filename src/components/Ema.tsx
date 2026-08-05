@@ -81,7 +81,15 @@ export function Ema() {
           </div>
         </div>
 
-        <div className={`grid grid-cols-2 gap-x-6 gap-y-16 sm:grid-cols-3 lg:grid-cols-6 ${live ? "ema-live" : ""}`}>
+        <div className="relative">
+          {/* shrine beam the plaques hang from */}
+          <div
+            className="pointer-events-none absolute -left-6 -right-6 top-0 h-[10px] rounded-[1px] lg:-left-32 lg:-right-16"
+            aria-hidden
+            style={{ background: "linear-gradient(180deg, oklch(0.44 0.035 45), oklch(0.29 0.03 40))" }}
+          />
+          <div className={`grid grid-cols-2 gap-x-6 gap-y-16 pt-[6px] sm:grid-cols-3 lg:grid-cols-6 ${live ? "ema-live" : ""}`}>
+
           {plaques.map((p, i) => (
             <div key={p.kanji} className="flex flex-col items-center">
               <div
