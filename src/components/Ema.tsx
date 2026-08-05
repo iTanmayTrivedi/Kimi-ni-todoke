@@ -134,7 +134,9 @@ export function Ema() {
               </div>
             </div>
           ))}
+          </div>
         </div>
+
       </div>
     </section>
   );
