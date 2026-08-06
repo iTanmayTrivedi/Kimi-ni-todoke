@@ -10,8 +10,10 @@ const chapters = [
   { id: "furin", label: "VI", name: "Fūrin" },
   { id: "tsukimi", label: "VII", name: "Tsukimi" },
   { id: "departures", label: "VIII", name: "Departures" },
-  { id: "timeline", label: "IX", name: "Thread" },
-  { id: "letters", label: "X", name: "Letters" },
+  { id: "yako", label: "IX", name: "Night Train" },
+  { id: "timeline", label: "X", name: "Thread" },
+  { id: "letters", label: "XI", name: "Letters" },
+
 
 
 ];
