@@ -33,7 +33,7 @@ export function NightTrain() {
       <style>{`
         @keyframes yako-flicker { 0%,100%{opacity:.85} 50%{opacity:.35} }
         @keyframes yako-hum { 0%{transform:translateY(0)} 50%{transform:translateY(0.6px)} 100%{transform:translateY(0)} }
-        .yako-car { animation: yako-hum 1.1s ease-in-out infinite; }
+        .yako-car { }
         @media (prefers-reduced-motion: reduce) {
           .yako-car { animation: none; }
           [data-yako-anim] { animation: none !important; }
