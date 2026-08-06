@@ -165,7 +165,6 @@ export function NightTrain() {
               style={{ opacity: reflect }}
               viewBox="0 0 400 300"
               className="pointer-events-none absolute bottom-0 left-[7%] h-[46%] w-auto md:h-[52%]"
-              viewBox="0 0 400 300"
               preserveAspectRatio="xMinYMax meet"
               aria-hidden
             >
