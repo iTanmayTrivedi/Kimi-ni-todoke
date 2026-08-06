@@ -164,7 +164,7 @@ export function NightTrain() {
             <motion.svg
               style={{ opacity: reflect }}
               viewBox="0 0 400 300"
-              className="pointer-events-none absolute bottom-0 left-[7%] h-[46%] w-auto md:h-[52%]"
+              className="pointer-events-none absolute bottom-[14%] left-[8%] h-[30%] w-auto md:h-[34%]"
               preserveAspectRatio="xMinYMax meet"
               aria-hidden
             >
