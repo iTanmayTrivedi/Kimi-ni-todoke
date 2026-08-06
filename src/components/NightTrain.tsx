@@ -164,11 +164,12 @@ export function NightTrain() {
             <motion.svg
               style={{ opacity: reflect }}
               viewBox="0 0 400 300"
-              className="pointer-events-none absolute bottom-[14%] left-[8%] h-[30%] w-auto md:h-[34%]"
+              className="pointer-events-none absolute bottom-[9%] left-[9%] h-auto w-[168px] md:w-[210px]"
               preserveAspectRatio="xMinYMax meet"
               aria-hidden
             >
-              <g fill="oklch(0.78 0.03 250)" opacity="0.28" style={{ filter: "blur(1.2px)" }}>
+              <g fill="oklch(0.8 0.03 250)" opacity="0.2" style={{ filter: "blur(1.4px)" }}>
+
 
                 <circle cx="120" cy="118" r="30" />
                 <path d="M78 300 Q80 190 120 172 Q160 190 162 300 Z" />
