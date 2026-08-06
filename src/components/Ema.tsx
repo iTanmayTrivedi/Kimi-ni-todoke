@@ -46,6 +46,14 @@ export function Ema() {
           88%  { transform: rotate(calc(var(--a) * 0.72)); }
           100% { transform: rotate(var(--a)); }
         }
+        @keyframes ema-rise {
+          from { opacity: 0; transform: translateY(18px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes ema-shimmer {
+          0%,100% { opacity: 0.35; }
+          50%     { opacity: 0.7; }
+        }
         .ema-plaque {
           transform-origin: 50% 0%;
           backface-visibility: hidden;
@@ -56,11 +64,22 @@ export function Ema() {
           animation-timing-function: linear;
         }
         .ema-plaque:hover { animation-play-state: paused; }
+        .ema-cell { opacity: 0; }
+        .ema-live .ema-cell { animation: ema-rise 1s cubic-bezier(0.2,0.7,0.1,1) forwards; }
+        .ema-swatch { transition: transform 600ms cubic-bezier(0.2,0.7,0.1,1), filter 600ms ease; }
+        .ema-cell:hover .ema-swatch { transform: translateY(-4px) scale(1.03); filter: saturate(1.08); }
         @media (prefers-reduced-motion: reduce) {
           .ema-live .ema-plaque { animation: none; }
+          .ema-cell, .ema-live .ema-cell { animation: none; opacity: 1; }
         }
       `}</style>
 
+      {/* lantern warmth behind the shrine beam */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[80vw] -translate-x-1/2"
+        aria-hidden
+        style={{ background: "radial-gradient(ellipse at 50% 0%, oklch(0.9 0.07 60 / 0.35), transparent 70%)" }}
+      />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:pl-32">
         <div className="mb-20 grid gap-8 md:grid-cols-12">
@@ -84,14 +103,32 @@ export function Ema() {
         <div className="relative">
           {/* shrine beam the plaques hang from */}
           <div
-            className="pointer-events-none absolute -left-6 -right-6 top-0 h-[10px] rounded-[1px] lg:-left-32 lg:-right-16"
+            className="pointer-events-none absolute -left-6 -right-6 top-0 h-[12px] rounded-[1px] lg:-left-32 lg:-right-16"
             aria-hidden
-            style={{ background: "linear-gradient(180deg, oklch(0.44 0.035 45), oklch(0.29 0.03 40))" }}
+            style={{
+              background:
+                "linear-gradient(180deg, oklch(0.5 0.04 45) 0%, oklch(0.4 0.035 42) 45%, oklch(0.27 0.03 40) 100%)",
+              boxShadow: "0 10px 22px -10px oklch(0.3 0.05 40 / 0.5)",
+            }}
           />
-          <div className={`grid grid-cols-2 gap-x-6 gap-y-16 pt-[6px] sm:grid-cols-3 lg:grid-cols-6 ${live ? "ema-live" : ""}`}>
+          {/* beam grain */}
+          <div
+            className="pointer-events-none absolute -left-6 -right-6 top-0 h-[12px] opacity-30 lg:-left-32 lg:-right-16"
+            aria-hidden
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, oklch(0.99 0 0 / 0.18) 0 1px, transparent 1px 9px)",
+            }}
+          />
+
+          <div className={`grid grid-cols-2 gap-x-6 gap-y-16 pt-[8px] sm:grid-cols-3 lg:grid-cols-6 ${live ? "ema-live" : ""}`}>
 
           {plaques.map((p, i) => (
-            <div key={p.kanji} className="flex flex-col items-center">
+            <div
+              key={p.kanji}
+              className="ema-cell flex flex-col items-center"
+              style={{ animationDelay: `${i * 110}ms` }}
+            >
               <div
                 className="ema-plaque relative"
                 style={{ ["--a" as string]: `${p.tilt}deg`, animationDelay: `-${p.delay}s` }}
@@ -102,40 +139,87 @@ export function Ema() {
                 <svg viewBox="0 0 60 44" className="mx-auto block w-[60px]" aria-hidden>
                   <path d="M30 0 L14 40" stroke="oklch(0.62 0.09 25)" strokeWidth="1.4" fill="none" />
                   <path d="M30 0 L46 40" stroke="oklch(0.62 0.09 25)" strokeWidth="1.4" fill="none" />
+                  <circle cx="30" cy="2" r="2.6" fill="oklch(0.55 0.1 25)" />
                 </svg>
 
                 {/* the tablet: pentagonal cedar ema */}
-                <svg viewBox="0 0 120 100" className="-mt-1 w-full max-w-[132px] drop-shadow-[0_16px_28px_oklch(0.3_0.05_40/0.28)]" role="img" aria-label={`${p.jp} — ${p.en}`}>
+                <svg
+                  viewBox="0 0 120 100"
+                  className="ema-swatch -mt-1 w-full max-w-[132px] drop-shadow-[0_18px_30px_oklch(0.3_0.05_40/0.3)]"
+                  role="img"
+                  aria-label={`${p.jp} — ${p.en}`}
+                >
                   <defs>
                     <linearGradient id={`ema-g-${i}`} x1="0" y1="0" x2="0.4" y2="1">
                       <stop offset="0%" stopColor={p.hue} />
                       <stop offset="100%" stopColor="oklch(0.8 0.05 55)" />
                     </linearGradient>
+                    <linearGradient id={`ema-sheen-${i}`} x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="oklch(1 0 0)" stopOpacity="0.42" />
+                      <stop offset="45%" stopColor="oklch(1 0 0)" stopOpacity="0.05" />
+                      <stop offset="100%" stopColor="oklch(0.35 0.04 40)" stopOpacity="0.16" />
+                    </linearGradient>
+                    <clipPath id={`ema-clip-${i}`}>
+                      <path d="M60 2 L114 26 L114 96 L6 96 L6 26 Z" />
+                    </clipPath>
                   </defs>
+
                   <path d="M60 2 L114 26 L114 96 L6 96 L6 26 Z" fill={`url(#ema-g-${i})`} stroke="oklch(0.5 0.06 45 / 0.5)" strokeWidth="1.5" />
+
                   {/* woodgrain */}
-                  <g stroke="oklch(0.45 0.05 45 / 0.16)" strokeWidth="0.7">
-                    {[38, 50, 62, 74, 86].map((y) => (
-                      <path key={y} d={`M10 ${y} Q60 ${y - 3} 110 ${y}`} fill="none" />
-                    ))}
+                  <g clipPath={`url(#ema-clip-${i})`}>
+                    <g stroke="oklch(0.45 0.05 45 / 0.16)" strokeWidth="0.7">
+                      {[38, 50, 62, 74, 86].map((y) => (
+                        <path key={y} d={`M4 ${y} Q60 ${y - 3} 116 ${y}`} fill="none" />
+                      ))}
+                    </g>
+                    {/* lacquer sheen */}
+                    <path d="M60 2 L114 26 L114 96 L6 96 L6 26 Z" fill={`url(#ema-sheen-${i})`} />
+                    {/* inner bevel */}
+                    <path
+                      d="M60 9 L108 30 L108 90 L12 90 L12 30 Z"
+                      fill="none"
+                      stroke="oklch(0.35 0.04 40 / 0.22)"
+                      strokeWidth="0.8"
+                    />
                   </g>
+
                   <text
                     x="60"
                     y="72"
                     textAnchor="middle"
-                    style={{ fontFamily: "var(--font-jp)", fontSize: 44, fill: "oklch(0.24 0.02 40 / 0.85)" }}
+                    style={{
+                      fontFamily: "var(--font-jp)",
+                      fontSize: 44,
+                      fill: "oklch(0.24 0.02 40 / 0.85)",
+                    }}
                   >
                     {p.kanji}
                   </text>
+                  {/* hanko seal */}
+                  <g opacity={0.62}>
+                    <rect x="96" y="78" width="12" height="12" rx="1.5" fill="none" stroke="oklch(0.55 0.16 25)" strokeWidth="1.2" />
+                    <text
+                      x="102"
+                      y="87.6"
+                      textAnchor="middle"
+                      style={{ fontFamily: "var(--font-jp)", fontSize: 8, fill: "oklch(0.55 0.16 25)" }}
+                    >
+                      願
+                    </text>
+                  </g>
                 </svg>
               </div>
 
-              <div className="mt-5 min-h-[92px] text-center">
+              <div className="mt-5 min-h-[104px] text-center">
                 <div className="text-sm text-ink/70" style={{ fontFamily: "var(--font-jp)" }}>{p.jp}</div>
                 <div className="mt-1 text-[9px] uppercase tracking-[0.35em] text-ink/40">{p.en}</div>
                 <p
-                  className="mt-3 text-xs font-light italic leading-relaxed text-ink/60 transition-opacity duration-500"
-                  style={{ opacity: hover === i ? 1 : 0 }}
+                  className="mt-3 text-xs font-light italic leading-relaxed text-ink/60 transition-all duration-500"
+                  style={{
+                    opacity: hover === i ? 1 : 0,
+                    transform: hover === i ? "translateY(0)" : "translateY(4px)",
+                  }}
                 >
                   {p.wish}
                 </p>
@@ -145,6 +229,10 @@ export function Ema() {
           </div>
         </div>
 
+        <div className="mt-24 flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-6 text-[9px] uppercase tracking-[0.4em] text-ink/40">
+          <span>絵馬 · Cedar, ink, weather</span>
+          <span>Kitahoro Shrine · 奉納</span>
+        </div>
       </div>
     </section>
   );
