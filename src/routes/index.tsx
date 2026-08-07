@@ -28,6 +28,8 @@ import { Orizuru } from "@/components/Orizuru";
 import { Ema } from "@/components/Ema";
 import { Departures } from "@/components/Departures";
 import { NightTrain } from "@/components/NightTrain";
+import { HeartCharm } from "@/components/HeartCharm";
+
 
 
 
@@ -87,6 +89,8 @@ function Index() {
         <AudioSignature />
         <InkConstellation />
         <Kintsugi />
+        <HeartCharm />
+
         <KanjiGlossary />
         <TextMaskReveal />
         <Letters />

@@ -160,23 +160,71 @@ export function NightTrain() {
               style={{ background: "linear-gradient(180deg, oklch(0.11 0.015 270), oklch(0.08 0.01 270))" }}
             />
 
-            {/* reflection in the glass — two silhouettes */}
-            <motion.svg
+            {/* reflection in the glass — the carriage interior, receding */}
+            <motion.div
               style={{ opacity: reflect }}
-              viewBox="0 0 400 300"
-              className="pointer-events-none absolute bottom-[13%] left-[10%] h-auto w-[230px] md:w-[290px]"
-              preserveAspectRatio="xMinYMax meet"
+              className="pointer-events-none absolute inset-0"
               aria-hidden
             >
-              <g fill="oklch(0.8 0.03 250)" opacity="0.26" style={{ filter: "blur(1.1px)" }}>
+              {/* row of overhead lamps, receding toward the vanishing point */}
+              {[0, 1, 2, 3, 4].map((i) => {
+                const t = i / 4;
+                const w = 92 - t * 66;
+                return (
+                  <div
+                    key={i}
+                    className="absolute rounded-full"
+                    style={{
+                      left: `${8 + t * 54}%`,
+                      top: `${22 + t * 9}%`,
+                      width: w,
+                      height: w * 0.3,
+                      background:
+                        "radial-gradient(ellipse at 50% 50%, oklch(0.95 0.05 85 / 0.5), oklch(0.9 0.06 85 / 0.12) 60%, transparent 75%)",
+                      filter: "blur(2px)",
+                      opacity: 1 - t * 0.55,
+                    }}
+                  />
+                );
+              })}
 
+              {/* reflected seat-back line + luggage rack, one-point perspective */}
+              <svg
+                viewBox="0 0 400 300"
+                preserveAspectRatio="none"
+                className="absolute inset-0 h-full w-full"
+                style={{ filter: "blur(0.6px)" }}
+              >
+                <g stroke="oklch(0.85 0.03 250)" strokeWidth="0.8" opacity="0.18" fill="none">
+                  <path d="M-10 96 L250 132" />
+                  <path d="M-10 214 L250 170" />
+                  <path d="M14 214 L14 108" />
+                  <path d="M92 206 L92 116" />
+                  <path d="M164 198 L164 124" />
+                </g>
+                <g fill="oklch(0.86 0.03 250)" opacity="0.1">
+                  <path d="M-10 216 Q60 200 140 190 L150 214 Q70 224 -10 240 Z" />
+                </g>
+              </svg>
 
-                <circle cx="120" cy="118" r="30" />
-                <path d="M78 300 Q80 190 120 172 Q160 190 162 300 Z" />
-                <circle cx="206" cy="106" r="31" />
-                <path d="M164 300 Q166 178 206 160 Q248 178 250 300 Z" />
-              </g>
-            </motion.svg>
+              {/* a fingertip heart drawn into the condensation */}
+              <svg
+                viewBox="0 0 100 100"
+                className="absolute bottom-[26%] left-[13%] w-[74px] md:w-[92px]"
+                aria-hidden
+              >
+                <path
+                  d="M50 84 C22 64 10 48 10 34 C10 22 19 14 29 14 C37 14 45 19 50 27 C55 19 63 14 71 14 C81 14 90 22 90 34 C90 48 78 64 50 84 Z"
+                  fill="none"
+                  stroke="oklch(0.95 0.03 250)"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  opacity="0.34"
+                  style={{ filter: "blur(0.5px)" }}
+                />
+              </svg>
+            </motion.div>
+
 
             {/* cold glass sheen + condensation */}
             <div
