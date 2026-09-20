@@ -5,14 +5,15 @@ const chapters = [
   { id: "top", label: "I", name: "Encounter" },
   { id: "characters", label: "II", name: "Portraits" },
   { id: "scenes", label: "III", name: "Scenes" },
-  { id: "orizuru", label: "IV", name: "Orizuru" },
-  { id: "ema", label: "V", name: "Ema" },
-  { id: "furin", label: "VI", name: "Fūrin" },
-  { id: "tsukimi", label: "VII", name: "Tsukimi" },
-  { id: "departures", label: "VIII", name: "Departures" },
-  { id: "yako", label: "IX", name: "Night Train" },
-  { id: "timeline", label: "X", name: "Thread" },
-  { id: "letters", label: "XI", name: "Letters" },
+  { id: "cel", label: "IV", name: "Cel Atelier" },
+  { id: "orizuru", label: "V", name: "Orizuru" },
+  { id: "ema", label: "VI", name: "Ema" },
+  { id: "furin", label: "VII", name: "Fūrin" },
+  { id: "tsukimi", label: "VIII", name: "Tsukimi" },
+  { id: "departures", label: "IX", name: "Departures" },
+  { id: "yako", label: "X", name: "Night Train" },
+  { id: "timeline", label: "XI", name: "Thread" },
+  { id: "letters", label: "XII", name: "Letters" },
 
 
 
