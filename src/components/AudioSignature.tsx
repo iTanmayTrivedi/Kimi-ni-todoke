@@ -12,7 +12,19 @@ export function AudioSignature() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   const [tick, setTick] = useState(0);
+  const [live, setLive] = useState(false);
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setLive(Boolean(entry?.isIntersecting)), {
+      rootMargin: "100px",
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!live) return;
     let raf = 0;
     let last = 0;
     const loop = (t: number) => {
@@ -24,7 +36,7 @@ export function AudioSignature() {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [live]);
 
   // 64 bars, sine + slight noise
   const bars = Array.from({ length: 64 }, (_, i) => {
