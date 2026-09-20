@@ -46,6 +46,8 @@
   --primary-foreground: oklch(0.99 0 0);
   --accent: oklch(0.85 0.05 145);
   --accent-foreground: oklch(0.22 0.01 260);
+  --cel-blue: oklch(0.86 0.045 232);
+  --cel-light: oklch(0.99 0.015 88);
   --radius: 0;
 }
 
@@ -132,4 +134,65 @@
   opacity: 0.35;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.2  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+@keyframes cel-glint {
+  0%, 76%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  82% { opacity: 0.85; transform: scale(1) rotate(22deg); }
+  90% { opacity: 0; transform: scale(1.35) rotate(45deg); }
+}
+
+.cel-frame {
+  --cel-x: 0;
+  --cel-y: 0;
+  perspective: 1100px;
+  box-shadow: var(--shadow-soft);
+  isolation: isolate;
+}
+.cel-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid color-mix(in oklab, var(--cel-light) 58%, transparent);
+  box-shadow: inset 0 0 70px color-mix(in oklab, var(--ink) 13%, transparent);
+}
+.cel-layer {
+  transition: transform 700ms cubic-bezier(.2,.7,.1,1), opacity 500ms ease;
+  will-change: transform;
+}
+.cel-layer-color {
+  transform: translate3d(calc(var(--cel-x) * -3px), calc(var(--cel-y) * -3px), 0) scale(1.025);
+  filter: saturate(.8) contrast(.94) brightness(1.05);
+}
+.cel-layer-ink {
+  transform: translate3d(calc(var(--cel-x) * 4px), calc(var(--cel-y) * 4px), 0) scale(1.025);
+  filter: grayscale(1) contrast(1.45) brightness(.72);
+  mix-blend-mode: multiply;
+  opacity: .18;
+}
+.cel-layer-light {
+  transform: translate3d(calc(var(--cel-x) * 8px), calc(var(--cel-y) * 8px), 0);
+  background:
+    linear-gradient(112deg, color-mix(in oklab, var(--cel-light) 70%, transparent), transparent 32%),
+    radial-gradient(circle at 72% 24%, color-mix(in oklab, var(--cel-blue) 38%, transparent), transparent 24%),
+    linear-gradient(180deg, transparent 48%, color-mix(in oklab, var(--paper) 78%, transparent));
+  mix-blend-mode: screen;
+}
+.cel-layer-pencil {
+  color: color-mix(in oklab, var(--ink) 34%, transparent);
+  transform: translate3d(calc(var(--cel-x) * 11px), calc(var(--cel-y) * 11px), 0);
+}
+.cel-glint {
+  position: absolute;
+  color: var(--cel-light);
+  text-shadow: 0 0 18px var(--cel-light);
+  animation: cel-glint 5.5s ease-in-out infinite;
+}
+.cel-glint-one { right: 24%; top: 20%; font-size: 1.5rem; }
+.cel-glint-two { right: 17%; top: 28%; font-size: .85rem; animation-delay: .35s; }
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .cel-layer { transform: none; transition: none; will-change: auto; }
+  .cel-glint { animation: none; opacity: .35; }
 }

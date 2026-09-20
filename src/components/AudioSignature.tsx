@@ -12,7 +12,19 @@ export function AudioSignature() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   const [tick, setTick] = useState(0);
+  const [live, setLive] = useState(false);
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setLive(Boolean(entry?.isIntersecting)), {
+      rootMargin: "100px",
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!live) return;
     let raf = 0;
     let last = 0;
     const loop = (t: number) => {
@@ -24,7 +36,7 @@ export function AudioSignature() {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [live]);
 
   // 64 bars, sine + slight noise
   const bars = Array.from({ length: 64 }, (_, i) => {
@@ -68,7 +80,7 @@ export function AudioSignature() {
             {/* waveform bars */}
             <div className="relative flex h-full items-center gap-[3px]">
               {bars.map((v, i) => (
-                <div key={i} className="flex-1" style={{ height: `${v * 100}%`, background: `linear-gradient(180deg, oklch(0.7 0.12 15) 0%, oklch(0.85 0.06 340) 100%)`, opacity: 0.75 }} />
+                <div key={i} className="audio-signature-bar flex-1" style={{ height: `${(v * 100).toFixed(4)}%` }} />
               ))}
             </div>
 

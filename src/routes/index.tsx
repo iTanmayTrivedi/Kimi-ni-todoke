@@ -29,6 +29,7 @@ import { Ema } from "@/components/Ema";
 import { Departures } from "@/components/Departures";
 import { NightTrain } from "@/components/NightTrain";
 import { HeartCharm } from "@/components/HeartCharm";
+import { CelAtelier } from "@/components/CelAtelier";
 
 
 
@@ -70,6 +71,7 @@ function Index() {
         <HorizontalCinema />
         <CuratorsNote />
         <MangaPanels />
+        <CelAtelier />
         <HaikuInterlude />
         <ConfessionScene />
         <SeasonsDiptych />
