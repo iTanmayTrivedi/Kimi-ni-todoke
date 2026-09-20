@@ -80,7 +80,7 @@ export function AudioSignature() {
             {/* waveform bars */}
             <div className="relative flex h-full items-center gap-[3px]">
               {bars.map((v, i) => (
-                <div key={i} className="flex-1" style={{ height: `${v * 100}%`, background: `linear-gradient(180deg, oklch(0.7 0.12 15) 0%, oklch(0.85 0.06 340) 100%)`, opacity: 0.75 }} />
+                <div key={i} className="audio-signature-bar flex-1" style={{ height: `${(v * 100).toFixed(4)}%` }} />
               ))}
             </div>
 
