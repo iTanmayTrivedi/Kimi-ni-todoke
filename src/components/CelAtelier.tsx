@@ -76,6 +76,7 @@ export function CelAtelier() {
               <div><dt>Medium</dt><dd>Acetate &amp; gouache</dd></div>
               <div><dt>Status</dt><dd>Digitally restored</dd></div>
             </dl>
+          </div>
 
           <div className="md:col-span-7 md:col-start-6">
             <motion.div
