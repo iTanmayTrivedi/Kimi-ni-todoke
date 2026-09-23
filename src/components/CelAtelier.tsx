@@ -52,27 +52,30 @@ export function CelAtelier() {
   } as CSSProperties;
 
   return (
-    <section ref={sectionRef} id="cel" className="chapter-cv relative overflow-hidden bg-paper py-32 md:py-44">
+    <section ref={sectionRef} id="cel" className="chapter-cv cel-atelier relative overflow-hidden bg-paper py-32 md:py-44">
+      <div className="cel-archive-index" aria-hidden>作画資料 · 042</div>
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:pl-32">
-        <div className="grid gap-14 md:grid-cols-12 md:items-center">
+        <div className="grid gap-16 md:grid-cols-12 md:items-center lg:gap-20">
           <div className="md:col-span-4">
-            <div className="mb-4 text-[10px] uppercase tracking-[0.5em] text-ink/50">
-              Interlude · 作画 · The Cel Atelier
+            <div className="mb-5 flex items-center gap-4 text-[9px] uppercase tracking-[0.42em] text-ink/45">
+              <span className="h-px w-10 bg-ink/20" />
+              Archive collection · 042
             </div>
             <h2 className="font-serif text-5xl italic leading-[1.02] text-ink md:text-7xl">
               Before a feeling
               <br />
               <span className="text-ink/40">learns to move.</span>
             </h2>
-            <div className="hairline my-8 max-w-xs" />
-            <p className="max-w-sm text-sm font-light leading-relaxed text-ink/60">
+            <p className="mt-8 max-w-sm text-sm font-light leading-relaxed text-ink/60">
               One painted breath, separated into line, colour and light. The smallest glance becomes a whole scene
               before the camera ever begins to turn.
             </p>
-            <div className="mt-8 flex items-center gap-4 text-[9px] uppercase tracking-[0.36em] text-ink/40">
-              <span className="h-px w-10 bg-primary/50" />
-              Layout Nº 041 · Key frame A
-            </div>
+
+            <dl className="cel-ledger mt-10 max-w-sm">
+              <div><dt>Sequence</dt><dd>KNT · S1 · 041</dd></div>
+              <div><dt>Medium</dt><dd>Acetate &amp; gouache</dd></div>
+              <div><dt>Status</dt><dd>Digitally restored</dd></div>
+            </dl>
           </div>
 
           <div className="md:col-span-7 md:col-start-6">
@@ -81,8 +84,15 @@ export function CelAtelier() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15%" }}
               transition={{ duration: 1.1, ease: [0.2, 0.7, 0.1, 1] }}
-              className="relative mx-auto max-w-2xl"
+              className="cel-exhibit relative mx-auto max-w-2xl"
             >
+              <div className="cel-genga-sheet" aria-hidden>
+                <span>原画 · GENGA</span>
+                <svg viewBox="0 0 240 160">
+                  <path d="M34 108 C66 32 152 24 202 83 M59 124 C93 78 144 70 190 106" />
+                  <circle cx="119" cy="80" r="51" />
+                </svg>
+              </div>
               <div
                 ref={frameRef}
                 onPointerMove={moveLayers}
@@ -134,14 +144,19 @@ export function CelAtelier() {
                 <div className="cel-glint cel-glint-two" aria-hidden>✧</div>
               </div>
 
-              <div className="mx-auto flex w-[82%] items-start justify-between border-x border-b border-border bg-background/70 px-4 py-3 text-[8px] uppercase tracking-[0.3em] text-ink/45 backdrop-blur-sm md:px-6">
-                <span>Paint · Sakura / Sage</span>
+              <div className="cel-catalogue-slip">
+                <span>Restored production art</span>
+                <strong>Scene 04 · Cut 12-A</strong>
                 <span>セル画 · 透明</span>
               </div>
-              <div className="mx-auto flex w-28 justify-around border-x border-b border-border bg-background/80 py-2" aria-hidden>
+              <div className="cel-pegbar" aria-hidden>
                 {[0, 1, 2].map((hole) => (
-                  <span key={hole} className="h-2.5 w-5 rounded-full border border-border bg-paper" />
+                  <span key={hole} />
                 ))}
+              </div>
+              <div className="cel-auth-tag" aria-hidden>
+                <span>Archive authentication</span>
+                <strong>P-IG · 2009</strong>
               </div>
             </motion.div>
           </div>
