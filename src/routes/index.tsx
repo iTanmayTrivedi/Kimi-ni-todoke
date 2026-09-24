@@ -30,6 +30,7 @@ import { Departures } from "@/components/Departures";
 import { NightTrain } from "@/components/NightTrain";
 import { HeartCharm } from "@/components/HeartCharm";
 import { CelAtelier } from "@/components/CelAtelier";
+import { SixGlances } from "@/components/SixGlances";
 
 
 
@@ -72,6 +73,7 @@ function Index() {
         <CuratorsNote />
         <MangaPanels />
         <CelAtelier />
+        <SixGlances />
         <HaikuInterlude />
         <ConfessionScene />
         <SeasonsDiptych />

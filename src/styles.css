@@ -141,6 +141,72 @@
   opacity: .75;
 }
 
+.glances-section {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--paper) 96%, var(--sakura)), var(--paper));
+}
+.glances-stage {
+  --glance-x: 0px;
+  --glance-y: 0px;
+  perspective: 1400px;
+}
+.glances-frame {
+  background: var(--ink);
+  border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+  box-shadow: 0 40px 100px -52px color-mix(in oklab, var(--ink) 62%, transparent);
+  transform: rotateX(calc(var(--glance-y) * -.12)) rotateY(calc(var(--glance-x) * .12));
+  transition: transform 900ms cubic-bezier(.2,.7,.1,1), box-shadow 900ms ease;
+}
+.glances-stage:hover .glances-frame {
+  box-shadow: 0 48px 110px -48px color-mix(in oklab, var(--ink) 70%, transparent);
+}
+.glances-image {
+  transform: translate3d(calc(var(--glance-x) * -.25), calc(var(--glance-y) * -.25), 0) scale(1.018);
+  transition: transform 900ms cubic-bezier(.2,.7,.1,1);
+}
+.glances-vignette {
+  background:
+    linear-gradient(180deg, transparent 48%, color-mix(in oklab, var(--ink) 76%, transparent) 100%),
+    linear-gradient(90deg, color-mix(in oklab, var(--ink) 16%, transparent), transparent 32%, transparent 68%, color-mix(in oklab, var(--ink) 12%, transparent));
+}
+.glances-strip { isolation: isolate; }
+.glances-thumb {
+  border: 1px solid color-mix(in oklab, var(--ink) 13%, transparent);
+  opacity: .52;
+  filter: saturate(.65);
+  transition: opacity 500ms ease, filter 500ms ease, transform 500ms cubic-bezier(.2,.7,.1,1), border-color 500ms ease;
+}
+.glances-thumb:hover,
+.glances-thumb:focus-visible,
+.glances-thumb.is-active {
+  opacity: 1;
+  filter: saturate(1);
+  border-color: color-mix(in oklab, var(--primary) 70%, var(--ink));
+  transform: translateY(-4px);
+}
+.glances-index {
+  position: absolute;
+  bottom: 3rem;
+  right: clamp(1.5rem, 4vw, 4rem);
+  color: color-mix(in oklab, var(--ink) 16%, transparent);
+  font-family: var(--font-jp);
+  font-size: .62rem;
+  letter-spacing: .34em;
+  writing-mode: vertical-rl;
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .glances-frame,
+  .glances-image,
+  .glances-thumb { transform: none; transition-duration: 1ms; }
+}
+
+@media (max-width: 767px) {
+  .glances-index { display: none; }
+  .glances-frame { transform: none; }
+  .glances-image { transform: scale(1.01); }
+}
+
 @keyframes cel-glint {
   0%, 76%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
   82% { opacity: 0.85; transform: scale(1) rotate(22deg); }
