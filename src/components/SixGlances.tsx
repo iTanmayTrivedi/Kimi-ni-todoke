@@ -1,20 +1,19 @@
 import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import nightAsset from "@/assets/six-glances-night.jpg.asset.json";
-import bloomAsset from "@/assets/six-glances-bloom.jpg.asset.json";
-import popAsset from "@/assets/six-glances-pop.jpg.asset.json";
-import afterglowAsset from "@/assets/six-glances-afterglow.jpg.asset.json";
-import blushAsset from "@/assets/six-glances-blush.jpg.asset.json";
-import rainAsset from "@/assets/six-glances-rain.png.asset.json";
-
+import nightAsset from "@/assets/six-glances-night.jpg";
+import bloomAsset from "@/assets/six-glances-bloom.jpg";
+import popAsset from "@/assets/six-glances-pop.jpg";
+import afterglowAsset from "@/assets/six-glances-afterglow.jpg";
+import blushAsset from "@/assets/six-glances-blush.jpg";
+import rainAsset from "@/assets/six-glances-rain.png";
 const glances = [
-  { src: nightAsset.url, jp: "星逢い", title: "Where the night listens", note: "A promise held beneath a thousand quiet stars.", position: "center" },
-  { src: bloomAsset.url, jp: "花顔", title: "A smile in bloom", note: "The instant shyness begins to look like courage.", position: "center 34%" },
-  { src: popAsset.url, jp: "胸騒ぎ", title: "Heart, suddenly louder", note: "A bright little storm of feelings with nowhere to hide.", position: "center" },
-  { src: afterglowAsset.url, jp: "夕映え", title: "Afterglow", note: "Even an ordinary window remembers the light.", position: "center" },
-  { src: blushAsset.url, jp: "初恋", title: "The first blush", note: "One look, magnified until it fills the whole world.", position: "center" },
-  { src: rainAsset.url, jp: "雨音", title: "Rain between words", note: "What cannot be said still gathers at the eyes.", position: "center" },
+  { src: nightAsset, jp: "星逢い", title: "Where the night listens", note: "A promise held beneath a thousand quiet stars.", position: "center" },
+  { src: bloomAsset, jp: "花顔", title: "A smile in bloom", note: "The instant shyness begins to look like courage.", position: "center 34%" },
+  { src: popAsset, jp: "胸騒ぎ", title: "Heart, suddenly louder", note: "A bright little storm of feelings with nowhere to hide.", position: "center" },
+  { src: afterglowAsset, jp: "夕映え", title: "Afterglow", note: "Even an ordinary window remembers the light.", position: "center" },
+  { src: blushAsset, jp: "初恋", title: "The first blush", note: "One look, magnified until it fills the whole world.", position: "center" },
+  { src: rainAsset, jp: "雨音", title: "Rain between words", note: "What cannot be said still gathers at the eyes.", position: "center" },
 ] as const;
 
 export function SixGlances() {
