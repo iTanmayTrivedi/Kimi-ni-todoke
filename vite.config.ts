@@ -27,20 +27,7 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     }),
-    command === "build"
-      ? nitro({
-          preset: "cloudflare-module",
-          output: {
-            dir: "dist",
-            serverDir: "dist/server",
-            publicDir: "dist/client",
-          },
-          cloudflare: {
-            nodeCompat: true,
-            deployConfig: true,
-          },
-        })
-      : undefined,
+    command === "build" ? nitro({ preset: "vercel" }) : undefined,
     react(),
   ];
 
