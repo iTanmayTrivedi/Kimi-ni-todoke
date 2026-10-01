@@ -14,8 +14,13 @@ type ErrorReporter = {
 
 export function reportApplicationError(error: unknown, context: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
-  const integrationKey = `__${["love", "able"].join("")}Events`;
-  const reporter = (window as unknown as Record<string, ErrorReporter | undefined>)[integrationKey];
+  const reporter = Object.values(window).find(
+    (candidate): candidate is ErrorReporter =>
+      typeof candidate === "object" &&
+      candidate !== null &&
+      "captureException" in candidate &&
+      typeof (candidate as ErrorReporter).captureException === "function",
+  );
   reporter?.captureException?.(
     error,
     {
