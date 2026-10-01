@@ -12,15 +12,20 @@ type ErrorReporter = {
   ) => void;
 };
 
+function isErrorReporter(candidate: unknown): candidate is ErrorReporter {
+  return (
+    typeof candidate === "object" &&
+    candidate !== null &&
+    "captureException" in candidate &&
+    typeof candidate.captureException === "function"
+  );
+}
+
 export function reportApplicationError(error: unknown, context: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
-  const reporter = Object.values(window).find(
-    (candidate): candidate is ErrorReporter =>
-      typeof candidate === "object" &&
-      candidate !== null &&
-      "captureException" in candidate &&
-      typeof (candidate as ErrorReporter).captureException === "function",
-  );
+  const reporter = Object.values(Object.getOwnPropertyDescriptors(window))
+    .map(({ value }) => value as unknown)
+    .find(isErrorReporter);
   reporter?.captureException?.(
     error,
     {
